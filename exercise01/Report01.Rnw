@@ -1,11 +1,5 @@
-\documentclass[a4paper, 11pt]{article}
-%\usepackage[english, greek]{babel}
-%\usepackage[utf8x]{inputenc}
-\usepackage{a4wide, amsmath, commath, graphicx, hyperref}
-\usepackage{kerkis}
-%\usepackage[usenames,dvipsnames]{xcolor}
-
-\raggedbottom
+\documentclass[a4paper, 11pt, twocolumn, draft]{article}
+\usepackage{a4wide, amsmath, amsfonts, amssymb, commath, kerkis}
 
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 \newcommand{\tltt}[1]{\texttt{\textlatin{#1}}}
@@ -15,7 +9,6 @@
 \renewcommand*\thesection{\arabic{section}}
 
 \begin{document}
-
 \begin{titlepage}
 \centering
 
@@ -52,7 +45,6 @@ Nikolaos Korasidis \\
 \pagestyle{myheadings}
 \markboth{Exercise Set 1}{Evolutionary Dynamics}
 
-\clearpage
 \input{sections/sec1}
 \input{sections/sec2}
 
