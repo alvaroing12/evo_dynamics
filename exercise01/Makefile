@@ -23,6 +23,7 @@ backup: $(NAME).pdf
 	mv -f $(NAME).pdf $(NAME).old.pdf
 
 clean:
+	$(RM) -r figure
 	$(RM) sec*.tex
 	$(RM) $(NAME).tex
 	$(RM) $(NAME).aux $(NAME).bbl $(NAME).blg $(NAME).log $(NAME).out $(NAME).pyg
