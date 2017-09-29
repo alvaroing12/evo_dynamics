@@ -1,0 +1,54 @@
+\documentclass[a4paper, 11pt]{article}
+%\usepackage[english, greek]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage{a4wide, amsmath, commath, graphicx, hyperref}
+\usepackage{kerkis}
+%\usepackage[usenames,dvipsnames]{xcolor}
+
+\raggedbottom
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\tltt}[1]{\texttt{\textlatin{#1}}}
+\newcommand{\tlsc}[1]{\textsc{\textlatin{#1}}}
+
+\renewcommand{\labelenumi}{\arabic{enumi}}
+\renewcommand*\thesection{\arabic{section}}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+
+% Upper part of the page
+\includegraphics[width=150px]{ETH.png}\\[1cm]    
+\textsc{\Large Evolutionary Dynamics 2017} \\[0.5cm]
+
+% Title
+\HRule \\[0.5cm]
+{\huge \bfseries Exercise Set 1}\\[0.2cm]
+\HRule \\[1.5cm]
+
+% Authors
+\begin{minipage}{0.4\textwidth}
+\large
+Nikolaos Korasidis \\
+\texttt{16-923-055} \\
+\texttt{nkorasid@student.ethz.ch}
+\end{minipage}
+
+\vfill
+
+{\large \today}
+\end{titlepage}
+
+\pagestyle{myheadings}
+\markboth{Exercise Set 1}{Evolutionary Dynamics}
+
+\clearpage
+\input{sections/sec1}
+\input{sections/sec2}
+
+%\bibliographystyle{abbrv}
+%\bibliography{bibliografia}
+%\include{sections/appendix}
+\end{document}

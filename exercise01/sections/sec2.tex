@@ -1,0 +1,55 @@
+\section*{Problem 2}
+\subsection*{a}
+First of all we note that:
+\begin{equation*}
+    \frac{K}{x (K - x)} = \frac{(K - x) + x}{x (K - x)} = \frac{1}{x} + \frac{1}{K - x}
+\end{equation*}
+We can now solve the differential equation as follows:
+\begin{align*}
+    \dod{x(t)}{t} &= \lambda x(t) \del{1 - \frac{x(t)}{K}} \\
+    \frac{\dif x}{x \del{1 - \frac{x}{K}}} &= \lambda \dif t & [\mbox{separating variables}] \\
+    \frac{K \dif x}{x \del{K - x}} &= \lambda \dif t \\
+    \frac{\dif x}{x} + \frac{\dif x}{K - x} &= \lambda \dif t & [\mbox{as above}] \\
+    \int \left( \frac{1}{x} + \frac{1}{K - x} \right) \dif x &= \int \lambda \dif t & [\mbox{indefinite integration}] \\
+    \int \frac{\dif x}{x} - \int \frac{\dif x}{x - K} &= \int \lambda \dif t \\
+    \ln|x| - \ln|x - K| &= \lambda t + C \\
+    \ln\envert{\frac{x}{x - K}} &= \lambda t + C \\
+    \envert[-1]{\frac{x}{x - K}} &= \mathrm{e}^{\lambda t + C} \\
+    \frac{x}{x - K} &= \pm \mathrm{e}^{C} \mathrm{e}^{\lambda t} \\
+    \frac{x - K}{x} &= B \mathrm{e}^{-\lambda t} &\sbr{B = \pm \mathrm{e}^{-C}} \\
+    x - K &= Bx \mathrm{e}^{-\lambda t} \\
+    x \del{1 - B \mathrm{e}^{-\lambda t}} &= K \\
+    x(t) &= \frac{K}{1 - B \mathrm{e}^{-\lambda t}}
+\end{align*}
+Assuming that \( x(0) = x_0 \):
+\begin{align*}
+    x_0 &= \frac{K}{1 - B \mathrm{e}^{-\lambda \cdot 0}} \\
+    x_0 &= \frac{K}{1 - B} \\
+    B &= 1 - \frac{K}{x_0} \\
+    B &= \frac{x_0 - K}{x_0}
+\end{align*}
+and thus:
+\begin{align*}
+    x(t) &= \frac{K}{1 - \frac{x_0 - K}{x_0} \mathrm{e}^{-\lambda t}} \\
+         &= \frac{K x_0 \mathrm{e}^{\lambda t}}{x_0 e^{\lambda t} - (x_0 - K)} \\
+         &= \frac{K x_0 \mathrm{e}^{\lambda t}}{K + x_0 \del{e^{\lambda t} - 1}}
+\end{align*}
+
+\subsection*{b}
+A point \( x^* \) is an equilibrium point iff:
+\begin{align*}
+    \lambda x^* \del{1 - \frac{x^*}{K}} &= 0 \\
+    x^* (K - x^*) &= 0 \\
+    \\
+    x_{1}^{*} &= 0 \\
+    x_{2}^{*} &= K
+\end{align*}
+To study the stability of the equilibria, we write \( \od{x(t)}{t} = f(x(t)) \), with \( f(x) = \lambda x (1 - x/K) \). A point \( x^{*} \) is stable if \( |f'(x^{*})| < 0 \). We note that:
+\begin{align*}
+    f'(x) &= \lambda(1 - x/K) + \lambda x (-K) \\
+          &= \lambda \del{1 - \frac{2x}{K}} \\
+    \\
+    f'(x_{1}^{*}) &= f'(0) = \lambda > 0 \\
+    f'(x_{2}^{*}) &= f'(K) = -\lambda < 0
+\end{align*}
+Thus \( x_{1}^{*} = 0 \) is unstable and \( x_{2}^{*} = K \) is stable (assuming \( K \neq 0 \)).

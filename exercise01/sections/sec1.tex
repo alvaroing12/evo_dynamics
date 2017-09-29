@@ -1,0 +1,35 @@
+\section*{Problem 1}
+\subsection*{a}
+A point \( x^* \) is an equilibrium point iff:
+\begin{align*}
+    r x^* (1 - x^*) &= x^* \\
+    r x^* (1 - x^*) - x^* &= 0 \\
+    x^* (r - r x^* - 1) &= 0 \\
+    x^* (r x^* - (r - 1)) &= 0 \\
+    \\
+    x_{1}^{*} &= 0 \\
+    x_{2}^{*} &= \frac{r - 1}{r} & [\mbox{assuming \(r \neq 0 \)}]
+\end{align*}
+\subsection*{b}
+To evaluate stability, we write \( x_{t + 1} = f(x_{t}) \), with \( f(x) = r x (1 - x) \). A point \( x^{*} \) is stable if \( |f'(x^{*})| < 1 \). We note that:
+\begin{align*}
+    f'(x) &= - 2rx + r \\
+    \\
+    f'(x_{1}^{*}) &= f'(0) = r \\
+    \\
+    f'(x_{2}^{*}) &= f'\left(\frac{r - 1}{r}\right) = -r + 1
+\end{align*}
+Thus \( x_{1}^{*} \) is stable whenever \( |r| < 1 \iff r \in (-1, 1) \) and \( x_{2}^{*} \) is stable whenever \( |-r + 1| < 1 \iff r \in (0, 2) \). Thus, the stabilities are as follows:
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l||l|l|}
+        \hline
+        \( r \) & \( x_{1}^{*} = 0 \) & \( x_{2}^{*} = (r - 1)/r \) \\
+        \hline
+        \( 0.5 \) & Stable & Stable \\
+        \( 1.5 \) & Unstable & Stable \\
+        \( 2.5 \) & Unstable & Unstable \\
+        \hline
+    \end{tabular}
+\end{table}
