@@ -36,4 +36,6 @@ vignettes/*.pdf
 *.aux
 *.log
 *.out
+*.synctex.gz
+*-concordance.tex
 Report.pdf
