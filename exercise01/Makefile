@@ -1,7 +1,8 @@
 NAME:=Report01
 LATEXFLAGS=-halt-on-error -shell-escape
 BIBLIOGRAPHY:=bibliografia.bib
-INCLUDEFILES:=sec1.tex sec2.tex
+RNWSECTIONS:=$(wildcard sec*.Rnw)
+TEXSECTIONS:=$(RNWSECTIONS:.Rnw=.tex)
 
 .PHONY: all backup clean distclean
 
@@ -12,7 +13,7 @@ all: $(NAME).pdf
 	grep -B1 -A6 '## DLSODA' $@ | grep -v -f -  $@ > $@.tmp
 	mv $@.tmp $@
 
-$(NAME).pdf: $(NAME).tex $(BIBLIOGRAPHY) $(INCLUDEFILES)
+$(NAME).pdf: $(NAME).tex $(BIBLIOGRAPHY) $(TEXSECTIONS)
 	@pdflatex $(LATEXFLAGS) $(NAME).tex
 #	-bibtex $(NAME)
 #	-pdflatex $(LATEXFLAGS) $(NAME).tex
