@@ -34,6 +34,8 @@ vignettes/*.pdf
 
 # LaTeX auxiliary files
 *.aux
+*.blg
+*.bbl
 *.log
 *.out
 *.synctex.gz
