@@ -42,3 +42,4 @@ vignettes/*.pdf
 *-concordance.tex
 Report*.pdf
 Report*.tex
+sec*.tex
