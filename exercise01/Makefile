@@ -16,10 +16,8 @@ $(NAME).pdf: $(NAME).tex $(wildcard sections/*.tex)
 backup: $(NAME).pdf
 	mv -f $(NAME).pdf $(NAME).old.pdf
 
-clean: backup
-	rm -f $(NAME).aux $(NAME).blg $(NAME).log $(NAME).out $(NAME).pyg $(NAME).pdf
+clean:
+	$(RM) $(NAME).aux $(NAME).blg $(NAME).log $(NAME).out $(NAME).pyg
 
-distclean:
-	rm -f $(NAME).aux $(NAME).bbl $(NAME).blg $(NAME).log $(NAME).out $(NAME).pyg $(NAME).pdf $(NAME).old.pdf
-
-
+distclean: clean
+	$(RM) $(NAME).pdf
