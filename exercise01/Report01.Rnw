@@ -1,4 +1,4 @@
-\documentclass[a4paper, 11pt]{article}
+\documentclass[a4paper,11pt]{article}
 \usepackage{a4wide, amsmath, amsfonts, amssymb, commath, kerkis}
 
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
@@ -12,34 +12,34 @@
 \begin{titlepage}
 \centering
 
-% Upper part of the page
-\includegraphics[width=150px]{ETH.png}\\[1cm]    
-\textsc{\Large Evolutionary Dynamics 2017} \\[0.5cm]
+\begin{figure}[!ht]
+    \includegraphics[width=0.40\textwidth]{ETH.png}
+    \hfill
+    \includegraphics[width=0.40\textwidth]{DBSSE.png}
+\end{figure}
 
-% Title
 \HRule \\[0.5cm]
-{\huge \bfseries Exercise Set 1}\\[0.2cm]
-\HRule \\[1.5cm]
 
-% Authors
 \begin{minipage}{0.4\textwidth}
+\flushleft
+\textsc{\Huge Evolutionary Dynamics 2017} \\[0.7cm]
+{\Large Exercise Set 1} \\
+{\Large \today}
+\end{minipage}
+\hfill
+\begin{minipage}{0.4\textwidth}
+\raggedright
 \large
 Jorge Bretones Santamarina \\
 \texttt{16-932-162} \\
-\texttt{jorgeb@student.ethz.ch} \\
-\\
+\texttt{jorgeb@student.ethz.ch} \\[0.3cm]
 Alvaro Ingold \\
 \texttt{16-932-844} \\
-\texttt{ialvaro@student.ethz.ch} \\
-\\
+\texttt{ialvaro@student.ethz.ch} \\[0.3cm]
 Nikolaos Korasidis \\
 \texttt{16-923-055} \\
 \texttt{nkorasid@student.ethz.ch}
 \end{minipage}
-
-\vfill
-
-{\large \today}
 \end{titlepage}
 
 \pagestyle{myheadings}
