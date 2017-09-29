@@ -19,7 +19,7 @@ backup: $(NAME).pdf
 	mv -f $(NAME).pdf $(NAME).old.pdf
 
 clean:
-	$(RM) $(NAME).aux $(NAME).blg $(NAME).log $(NAME).out $(NAME).pyg
+	$(RM) $(NAME).aux $(NAME).bbl $(NAME).blg $(NAME).log $(NAME).out $(NAME).pyg
 
 distclean: clean
 	$(RM) $(NAME).pdf
