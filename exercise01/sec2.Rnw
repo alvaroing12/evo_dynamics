@@ -53,3 +53,35 @@ To study the stability of the equilibria, we write \( \od{x(t)}{t} = f(x(t)) \),
     f'(x_{2}^{*}) &= f'(K) = -\lambda < 0
 \end{align*}
 Thus \( x_{1}^{*} = 0 \) is unstable and \( x_{2}^{*} = K \) is stable (assuming \( K \neq 0 \)).
+
+<<>>=
+library(deSolve)
+lambda<-1
+K<-1
+parms<-c()
+my.atol <- c(1e-6)
+times<-c(0:2000)/50
+sdiffeqns <- function(t, s, parms)
+{
+  sd1 <- lambda * s[1] * (1 - s[1]/K)
+  list(c(sd1))
+}
+@
+
+<<warning=FALSE>>=
+initconds<-c(0-5e-2) # just below 0
+out0m <- lsoda(initconds,times,sdiffeqns, rtol=1e-10, atol= my.atol)
+initconds<-c(0+5e-2) # just above 0
+out0p <- lsoda(initconds,times,sdiffeqns, rtol=1e-10, atol= my.atol)
+initconds<-c(1-5e-2) # just below 1
+out1m <- lsoda(initconds,times,sdiffeqns, rtol=1e-10, atol= my.atol)
+initconds<-c(1+5e-2) # just above 1
+out1p <- lsoda(initconds,times,sdiffeqns, rtol=1e-10, atol= my.atol)
+@
+
+<<>>=
+plot(out0p,xlab="time",ylab="x",main="",col="dodgerblue",lty=1,lwd=2,ylim=c(-1,2),xlim=c(0,40))
+lines(out0m,col="#ff8c00",lty=3,lwd=3)
+lines(out1m,col="#68228b",lty=2,lwd=2)
+lines(out1p,col="#cd2626",lty=3,lwd=3)
+@

@@ -1,6 +1,7 @@
 NAME:=Report01
 LATEXFLAGS=-halt-on-error -shell-escape
 BIBLIOGRAPHY:=bibliografia.bib
+INCLUDEFILES:=sec1.tex sec2.tex
 
 .PHONY: all backup clean distclean
 
@@ -9,7 +10,7 @@ all: $(NAME).pdf
 %.tex: %.Rnw
 	Rscript -e "library(knitr); knit('$<')"
 
-$(NAME).pdf: $(NAME).tex $(BIBLIOGRAPHY) $(wildcard sections/*.tex)
+$(NAME).pdf: $(NAME).tex $(BIBLIOGRAPHY) $(INCLUDEFILES)
 	@pdflatex $(LATEXFLAGS) $(NAME).tex
 #	-bibtex $(NAME)
 #	-pdflatex $(LATEXFLAGS) $(NAME).tex

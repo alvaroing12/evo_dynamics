@@ -45,8 +45,8 @@ Nikolaos Korasidis \\
 \pagestyle{myheadings}
 \markboth{Exercise Set 1}{Evolutionary Dynamics}
 
-\input{sections/sec1}
-\input{sections/sec2}
+\input{sec1}
+\input{sec2}
 
 %\bibliographystyle{abbrv}
 %\bibliography{bibliografia}
