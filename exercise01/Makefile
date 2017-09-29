@@ -1,9 +1,8 @@
 NAME:=Report01
 LATEXFLAGS=-halt-on-error -shell-escape
 BIBLIOGRAPHY:=bibliografia.bib
-INCLUDEFILES=
 
-.PHONY: all backup clean create distclean
+.PHONY: all backup clean distclean
 
 all: $(NAME).pdf
 
@@ -20,12 +19,7 @@ backup: $(NAME).pdf
 clean: backup
 	rm -f $(NAME).aux $(NAME).blg $(NAME).log $(NAME).out $(NAME).pyg $(NAME).pdf
 
-create: $(NAME).tex $(INCLUDEFILES)
-
 distclean:
 	rm -f $(NAME).aux $(NAME).bbl $(NAME).blg $(NAME).log $(NAME).out $(NAME).pyg $(NAME).pdf $(NAME).old.pdf
 
-fix: $(NAME).tex $(INCLUDEFILES)
-	pdflatex $(LATEXFLAGS) $^
-	rm -f $(NAME).aux $(NAME).blg $(NAME).log $(NAME).out $(NAME).pyg
 
