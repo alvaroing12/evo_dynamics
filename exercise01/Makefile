@@ -6,8 +6,8 @@ BIBLIOGRAPHY:=bibliografia.bib
 
 all: $(NAME).pdf
 
-$(NAME).tex: $(NAME).Rnw
-	Rscript -e "library(knitr); knit('$(NAME).Rnw')"
+%.tex: %.Rnw
+	Rscript -e "library(knitr); knit('$<')"
 
 $(NAME).pdf: $(NAME).tex $(BIBLIOGRAPHY) $(wildcard sections/*.tex)
 	@pdflatex $(LATEXFLAGS) $(NAME).tex
