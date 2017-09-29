@@ -1,4 +1,4 @@
-NAME:=Report
+NAME:=Exercise01
 SUBMITNAME=$(NAME)
 LATEXFLAGS=-halt-on-error -shell-escape
 BIBLIOGRAPHY:=bibliografia.bib
