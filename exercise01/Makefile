@@ -6,12 +6,11 @@ BIBLIOGRAPHY:=bibliografia.bib
 
 all: $(NAME).pdf
 
-#$(NAME).pdf: $(BIBLIOGRAPHY) $(wildcard sections/*.tex)
-$(NAME).pdf: $(NAME).tex $(wildcard sections/*.tex)
+$(NAME).pdf: $(NAME).tex $(BIBLIOGRAPHY) $(wildcard sections/*.tex)
 	@pdflatex $(LATEXFLAGS) $(NAME).tex
-#	- bibtex $(NAME)
-#	- pdflatex $(LATEXFLAGS) $(NAME).tex
-#	- pdflatex $(LATEXFLAGS) $(NAME).tex
+#	-bibtex $(NAME)
+#	-pdflatex $(LATEXFLAGS) $(NAME).tex
+#	-pdflatex $(LATEXFLAGS) $(NAME).tex
 
 backup: $(NAME).pdf
 	mv -f $(NAME).pdf $(NAME).old.pdf
