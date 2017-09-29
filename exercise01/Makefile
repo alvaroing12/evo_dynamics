@@ -10,8 +10,7 @@ all: $(NAME).pdf
 
 %.tex: %.Rnw
 	Rscript -e "library(knitr); knit('$<')"
-	grep -B1 -A6 '## DLSODA' $@ | grep -v -f -  $@ > $@.tmp
-	mv $@.tmp $@
+	sed -i '/\\begin{verbatim}/,/\\end{verbatim}/d' $@
 
 $(NAME).pdf: $(NAME).tex $(BIBLIOGRAPHY) $(TEXSECTIONS)
 	@pdflatex $(LATEXFLAGS) $(NAME).tex
