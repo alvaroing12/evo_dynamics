@@ -1,4 +1,4 @@
-\documentclass[a4paper, 11pt, twocolumn, draft]{article}
+\documentclass[a4paper, 11pt]{article}
 \usepackage{a4wide, amsmath, amsfonts, amssymb, commath, kerkis}
 
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
