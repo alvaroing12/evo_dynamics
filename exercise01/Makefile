@@ -1,10 +1,9 @@
 NAME:=Report01
-SUBMITNAME=$(NAME)
 LATEXFLAGS=-halt-on-error -shell-escape
 BIBLIOGRAPHY:=bibliografia.bib
 INCLUDEFILES=
 
-.PHONY: all backup clean create distclean submit
+.PHONY: all backup clean create distclean
 
 all: $(NAME).pdf
 
@@ -30,5 +29,3 @@ fix: $(NAME).tex $(INCLUDEFILES)
 	pdflatex $(LATEXFLAGS) $^
 	rm -f $(NAME).aux $(NAME).blg $(NAME).log $(NAME).out $(NAME).pyg
 
-submit: $(NAME).pdf
-	cp $(NAME).pdf $(SUBMITNAME).pdf
