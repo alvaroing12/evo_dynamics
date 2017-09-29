@@ -9,6 +9,8 @@ all: $(NAME).pdf
 
 %.tex: %.Rnw
 	Rscript -e "library(knitr); knit('$<')"
+	grep -B1 -A6 '## DLSODA' $@ | grep -v -f -  $@ > $@.tmp
+	mv $@.tmp $@
 
 $(NAME).pdf: $(NAME).tex $(BIBLIOGRAPHY) $(INCLUDEFILES)
 	@pdflatex $(LATEXFLAGS) $(NAME).tex
