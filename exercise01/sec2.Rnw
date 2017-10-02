@@ -65,9 +65,9 @@ initconds<-c(0-5e-2) # just below 0
 out0m <- lsoda(initconds,times,sdiffeqns, rtol=1e-10, atol= my.atol)
 initconds<-c(0+5e-2) # just above 0
 out0p <- lsoda(initconds,times,sdiffeqns, rtol=1e-10, atol= my.atol)
-initconds<-c(1-5e-2) # just below 1
+initconds<-c(K-5e-2) # just below 1
 out1m <- lsoda(initconds,times,sdiffeqns, rtol=1e-10, atol= my.atol)
-initconds<-c(1+5e-2) # just above 1
+initconds<-c(K+5e-2) # just above 1
 out1p <- lsoda(initconds,times,sdiffeqns, rtol=1e-10, atol= my.atol)
 @
 
