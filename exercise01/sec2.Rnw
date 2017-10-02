@@ -17,21 +17,13 @@ We can now solve the differential equation as follows:
     \envert[-1]{\frac{x}{x - K}} &= \mathrm{e}^{\lambda t + C} \\
     \frac{x}{x - K} &= \pm \mathrm{e}^{C} \mathrm{e}^{\lambda t} \\
     \frac{x - K}{x} &= B \mathrm{e}^{-\lambda t} &\sbr{B = \pm \mathrm{e}^{-C}} \\
-    x - K &= Bx \mathrm{e}^{-\lambda t} \\
-    x \del{1 - B \mathrm{e}^{-\lambda t}} &= K \\
-    x(t) &= \frac{K}{1 - B \mathrm{e}^{-\lambda t}}
-\end{align*}
-Assuming that \( x(0) = x_0 \):
-\begin{align*}
-    x_0 &= \frac{K}{1 - B \mathrm{e}^{-\lambda \cdot 0}} \\
-    x_0 &= \frac{K}{1 - B} \\
-    B &= 1 - \frac{K}{x_0} \\
-    B &= \frac{x_0 - K}{x_0}
-\end{align*}
-and thus:
-\begin{align*}
+    x &= K + x B \mathrm{e}^{-\lambda t} \\
+    x &= \frac{K}{1 - B \mathrm{e}^{-\lambda t}} \\
+    \\
+    \frac{x_0 - K}{x_0} &= B \mathrm{e}^{-\lambda \cdot 0} = B &[\mbox{assuming } x(0) = x_0] \\
+    \\
     x(t) &= \frac{K}{1 - \frac{x_0 - K}{x_0} \mathrm{e}^{-\lambda t}} \\
-         &= \frac{K x_0 \mathrm{e}^{\lambda t}}{x_0 e^{\lambda t} - (x_0 - K)} \\
+         &= \frac{K x_0 \mathrm{e}^{\lambda t}}{x_0 e^{\lambda t} - (x_0 - K)} &[\mbox{multiply by } x_0 \mathrm{e}^{\lambda t}] \\
          &= \frac{K x_0 \mathrm{e}^{\lambda t}}{K + x_0 \del{e^{\lambda t} - 1}}
 \end{align*}
 
