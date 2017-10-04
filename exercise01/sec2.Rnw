@@ -46,6 +46,8 @@ To study the stability of the equilibria, we write \( \od{x(t)}{t} = f(x(t)) \),
 \end{align*}
 Thus \( x_{1}^{*} = 0 \) is unstable and \( x_{2}^{*} = K \) is stable (assuming \( K \neq 0 \)).
 
+\subsection*{c}
+We can inspect the behaviour derived above, by numerically integrating the ODE, using the \texttt{deSolve} package. First, we define the parametres required by the solver:
 <<>>=
 library(deSolve)
 lambda<-1
@@ -59,21 +61,24 @@ sdiffeqns <- function(t, s, parms)
   list(c(sd1))
 }
 @
-
+Then, we integrate the ODE beginning from 4 different points, 2 around the vicinity of each stable point:
 <<warning=FALSE>>=
 initconds<-c(0-5e-2) # just below 0
-out0m <- lsoda(initconds,times,sdiffeqns, rtol=1e-10, atol= my.atol)
+out0m <- lsoda(initconds,times,sdiffeqns,rtol=1e-10,atol= my.atol)
 initconds<-c(0+5e-2) # just above 0
-out0p <- lsoda(initconds,times,sdiffeqns, rtol=1e-10, atol= my.atol)
+out0p <- lsoda(initconds,times,sdiffeqns,rtol=1e-10,atol= my.atol)
 initconds<-c(K-5e-2) # just below 1
-out1m <- lsoda(initconds,times,sdiffeqns, rtol=1e-10, atol= my.atol)
+out1m <- lsoda(initconds,times,sdiffeqns,rtol=1e-10,atol= my.atol)
 initconds<-c(K+5e-2) # just above 1
-out1p <- lsoda(initconds,times,sdiffeqns, rtol=1e-10, atol= my.atol)
+out1p <- lsoda(initconds,times,sdiffeqns,rtol=1e-10,atol= my.atol)
 @
-
-<<>>=
-plot(out0p,xlab="time",ylab="x",main="",col="dodgerblue",lty=1,lwd=2,ylim=c(-1,2),xlim=c(0,40))
-lines(out0m,col="#ff8c00",lty=3,lwd=3)
-lines(out1m,col="#68228b",lty=2,lwd=2)
-lines(out1p,col="#cd2626",lty=3,lwd=3)
+Finaly, we plot our results. The trajectories beginning in the vicinity of \( 0 \) diverge, hence it is an unstable equilibrium point. On the contrary, trajectories beginning in the vicinity of \( K \) converge to it as \( t \to +\infty \), thus \( K \) is a stable equilibrium (note: in this simulation, \( K = 1 \)).
+<<fig.height=5>>=
+plot(out0p,xlab="time",ylab="x",main="",col="dodgerblue",
+        lty=2,lwd=3,ylim=c(-1,2),xlim=c(0,40)
+    )
+lines(out0m,col="#ff8c00",lty=2,lwd=3)
+lines(out1m,col="#68228b",lty=2,lwd=3)
+lines(out1p,col="#cd2626",lty=2,lwd=3)
+grid();
 @
