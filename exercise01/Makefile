@@ -25,7 +25,7 @@ clean:
 	$(RM) -r figure
 	$(RM) sec*.tex
 	$(RM) $(NAME).tex
-	$(RM) $(NAME).aux $(NAME).bbl $(NAME).blg $(NAME).log $(NAME).out $(NAME).pyg
+	$(RM) *.aux *.bbl *.blg *.log *.out *.pyg
 
 distclean: clean
 	$(RM) $(NAME).pdf
