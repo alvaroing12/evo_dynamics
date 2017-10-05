@@ -16,7 +16,6 @@ To evaluate stability, we write \( x_{t + 1} = f(x_{t}) \), with \( f(x) = r x (
     f'(x) &= - 2rx + r \\
     \\
     f'(x_{1}^{*}) &= f'(0) = r \\
-    \\
     f'(x_{2}^{*}) &= f'\left(\frac{r - 1}{r}\right) = -r + 2
 \end{align*}
 Thus \( x_{1}^{*} \) is stable iff \( |r| < 1 \iff r \in (-1, 1) \) and \( x_{2}^{*} \) is stable iff \( |-r + 2| < 1 \iff r \in (1, 3) \). Thus, the stabilities are as follows:
@@ -35,7 +34,7 @@ Thus \( x_{1}^{*} \) is stable iff \( |r| < 1 \iff r \in (-1, 1) \) and \( x_{2}
 \end{table}
 
 \subsection*{c}
-To inspect the behaviour derived above, we will iterate the logistic map around fixed points and produce Poincar\'e plots of the sequence produced. The script that will be used to produce the plots is the following. It was adapted from \texttt{http://mqasim.me/?m=201507\&paged=5}.
+To inspect the behaviour derived above, we will iterate the logistic map around fixed points and produce Poincar\'e sections of the resulting sequence. The script that will be used to plot a single section is the following. It was adapted from \texttt{http://mqasim.me/?m=201507\&paged=5}.
 <<>>=
 stepf <- function(x, r, K) {
     return (r * x * (1 - x/K));
@@ -83,7 +82,7 @@ makeplot <- function(r, K, N, start, color, xmin, ymin, ymax) {
 }
 @
 For some small value \( \epsilon > 0 \), we trace the behaviour of the system when started from \( x_{1}^{*} + \epsilon, x_{2}^{*} \pm \epsilon \), using the following code:
-<<>>=
+<<fig.height=7.1, fig.path='./figure/sec1-'>>=
 rs <- c(0.5, 1.5, 2.5);
 xmins <- c(-1.5, 0, 0);
 ymins <- c(-1.5, 0, 0);
@@ -106,7 +105,7 @@ As we can see in the plots, \( 0 \) is a stable fixed point only when \( r = 0.5
 
 \subsection*{d \& e}
 We can study the behaviour of the system in a similar fashion for \( r \in \{3.5, 3.9\} \). We know from theory that in a small vicinity around  \( r = 3.5 \), the system has \( 4 \) fixed points, whereas for larger values the system exhibits chaotic behaviour. To study these phenomena, we redo our Poincar\'e plots, but we do not display the first \( 50 \) steps of the sequences. Here is the script:
-<<>>=
+<<fig.height=4.1, fig.path='./figure/sec1-'>>=
 par(mfrow=c(2,3));
 rs <- c(3.5, 3.9);
 xmins <- c(0, 0);

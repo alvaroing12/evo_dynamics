@@ -73,7 +73,7 @@ initconds<-c(K+5e-2) # just above 1
 out1p <- lsoda(initconds,times,sdiffeqns,rtol=1e-10,atol= my.atol)
 @
 Finaly, we plot our results. The trajectories beginning in the vicinity of \( 0 \) diverge, hence it is an unstable equilibrium point. On the contrary, trajectories beginning in the vicinity of \( K \) converge to it as \( t \to +\infty \), thus \( K \) is a stable equilibrium (note: in this simulation, \( K = 1 \)).
-<<fig.height=5>>=
+<<fig.path='./figure/sec2-', fig.height=5>>=
 plot(out0p,xlab="time",ylab="x",main="",col="dodgerblue",
         lty=2,lwd=3,ylim=c(-1,2),xlim=c(0,40)
     )
