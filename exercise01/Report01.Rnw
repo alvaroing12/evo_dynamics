@@ -9,6 +9,18 @@
 \renewcommand*\thesection{\arabic{section}}
 
 \begin{document}
+
+<<setup, include=FALSE, cache=FALSE>>=
+# set global chunk options
+opts_chunk$set(comment="",tidy=TRUE,message=FALSE,warning=FALSE,echo=TRUE,cache=FALSE,
+fig.align='center', fig.show='hold', fig.width=3.5, fig.height=3.5)
+#tidy.opts=list(keep.blank.line=FALSE)
+#options(replace.assign=TRUE, width.cutoff=60)
+knitr::opts_knit$set(global.par = TRUE)
+options(tidy=TRUE,width=62)
+#dep_prev()
+@
+
 \begin{titlepage}
 \centering
 
