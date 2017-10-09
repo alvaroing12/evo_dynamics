@@ -2,7 +2,7 @@
 Consider a sequence \( S = (S_1, S_2, \ldots, S_L) \). It is easy to prove that uniformly sampling \( S \) from \( \mathcal{A}^L \) produces the same distribution with sampling a sequence of random variables \( (S_i)_{i = 1}^{L} \) from a uniform distribution over \( \mathcal{A} \), and then concatenating them into \( S \). Since the latter method helps us deal with simpler spaces and procedures, we will use it in what follows.
 
 \subsection*{a}
-Suppose \( S \) is a binary sequence of length \( L \), and \( S_i \) is its \( i\)-th element. The distribution of \( S_i \) is uniform over \( \{0, 1\} \). Given another such independently sampled sequence, \( T \) of length \( L \), the Hamming distance between \( S \) and \( T \) is:
+Suppose \( S \in \mathcal{A}^L \) is a sequence of length \( L \), and \( S_i \in \mathcal{A} \) is its \( i\)-th element. The distribution of \( S_i \) is uniform over \( \mathcal{A} \). Given another such independently sampled sequence, \( T \) of length \( L \), the Hamming distance between \( S \) and \( T \) is:
 \[
     h(S, T) = \sum_{i = 1}^{L} [S_i \neq T_i]
 \]
