@@ -1,3 +1,51 @@
 \section*{Problem 2}
 \subsection*{a}
+We write the full quasispecies equation as follows:
+\begin{align*}
+    \dot{\mathbf{x}}
+        &= \begin{bmatrix}
+                f_0 & 0 \\
+                0   & f_1
+            \end{bmatrix}
+            \begin{bmatrix}
+                q     & 1 - q \\
+                1 - q & q
+            \end{bmatrix}
+            \mathbf{x}
+            -
+            \phi \mathbf{x} \\
+        &= \begin{bmatrix}
+                f_0 q       & f_0 (1 - q) \\
+                f_1 (1 - q) & f_1 q
+            \end{bmatrix}
+            \mathbf{x}
+            -
+            \phi \mathbf{x} \\
+        &= \underbrace{
+                \begin{bmatrix}
+                    f_0 q   & f_0 (1 - q) \\
+                    (1 - q) & q
+                \end{bmatrix}
+            }_{W}
+            \mathbf{x}
+            -
+            \phi \mathbf{x} &[f_1 = 1] \\
+\end{align*}
+We know that \( W \) has \( 2 \) eigenvalues, \( \lambda_0 \) and \( \lambda_1 \). It holds that:
+\begin{align*}
+    \lambda_0 \lambda_1
+        &= \det W \\
+        &= \det(FQ) \\
+        &= \det(F) \det(Q) \\
+        &= (f_0 f_1) (q^2 - (1-q)^2) \\
+        &= f_0 (2q - 1) \\
+    \\
+    \lambda_0 + \lambda_1
+        &= \Tr W \\
+        &= q (f_0 + 1)
+\end{align*}
+Thus, the eigenvalues are the solution of the quadratic equation:
+\[
+    \lambda^2 - q (f_0 + 1) \lambda + f_0 (2q - 1) = 0
+\]
 \subsection*{b}
