@@ -14,17 +14,23 @@ where \( [\cdot] \) is the \href{https://en.wikipedia.org/wiki/Iverson_bracket}{
         0 & \text{otherwise} \\
     \end{cases}
 \]
-The expected value of the hamming distance, thus is:
+Given two elements at the same indices in the two sequences, \( S_i, T_i \), we can thus calculate the value of \( [S_i \neq T_i] \) as follows:
+\begin{align*}
+    [S_i \neq T_i]
+        &= 1 - [S_i = T_i] \\
+        &= 1 - P(S_i = T_i) \\
+        &= 1 - \sum_{a \in \mathcal{A}} P(S_i = a) P(T_i = a \mid S_i = a) \\
+        &= 1 - \sum_{a \in \mathcal{A}} P(S_i = a) P(T_i = a) &[\mbox{independent events}] \\
+        &= 1 - \sum_{a \in \mathcal{A}} \frac{1}{|\mathcal{A}|} \cdot \frac{1}{|\mathcal{A}|} &[\mbox{uniform sampling}] \\
+        &= 1 - \frac{1}{|\mathcal{A}|}
+\end{align*}
+The expected value of the Hamming distance between the sequences, thus is:
 \begin{align*}
     \E(h(S, T))
         &= \E \del{\sum_{i = 1}^{L} [S_i \neq T_i]} \\
-        &= \sum_{i = 1}^{L} \E([S_i \neq T_i]) &[\mbox{linearity of } \E] \\
-        &= \sum_{i = 1}^{L} \E([S_i = 0 \wedge T_i = 1 \vee S_i = 1 \wedge T_i = 0]) \\
-        &= \sum_{i = 1}^{L} P(S_i = 0 \wedge T_i = 1 \vee S_i = 1 \wedge T_i = 0) \\
-        &= \sum_{i = 1}^{L} (P(S_i = 0 \wedge T_i = 1) + P(S_i = 1 \wedge T_i = 0)) &[\mbox{disjoint events}]\\
-        &= \sum_{i = 1}^{L} (P(S_i = 0) P(T_i = 1) + P(S_i = 1) P(T_i = 0)) &[\mbox{independent events}]\\
-        &= \sum_{i = 1}^{L} (0.5 \times 0.5 + 0.5 \times 0.5) \\
-        &= L/2
+        &= \sum_{i = 1}^{L} \E\del{[S_i \neq T_i]} &[\mbox{linearity of } \E] \\
+        &= \sum_{i = 1}^{L} \del{1 - \frac{1}{|\mathcal{A}|}} \\
+        &= L \del{1 - \frac{1}{|\mathcal{A}|}}
 \end{align*}
 %
 %\subsection*{b}
