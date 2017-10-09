@@ -32,5 +32,14 @@ The expected value of the Hamming distance between the sequences, thus is:
         &= \sum_{i = 1}^{L} \del{1 - \frac{1}{|\mathcal{A}|}} \\
         &= L \del{1 - \frac{1}{|\mathcal{A}|}}
 \end{align*}
-%
-%\subsection*{b}
+Applying this formula, we obtain the following results:
+\begin{enumerate}
+    \item The average Hamming distance between two uniformly random binary sequences of length \( L \) is
+        \[
+            L \del{1 - \frac{1}{|\{0, 1\}|}} = L \del{1 - \frac{1}{2}} = \frac{L}{2}
+        \]
+    \item The average Hamming distance between two uniformly random DNA sequences of length \( L \) is
+        \[
+            L \del{1 - \frac{1}{|\{\mathrm{A}, \mathrm{C}, \mathrm{G}, \mathrm{T}\}|}} = L \del{1 - \frac{1}{4}} = \frac{3 L}{4}
+        \]
+\end{enumerate}
