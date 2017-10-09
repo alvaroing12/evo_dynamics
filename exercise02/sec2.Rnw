@@ -1,3 +1,30 @@
 \section*{Problem 2}
+Consider a sequence \( S = (S_1, S_2, \ldots, S_L) \). It is easy to prove that uniformly sampling \( S \) from \( \mathcal{A}^L \) produces the same distribution with sampling a sequence of random variables \( (S_i)_{i = 1}^{L} \) from a uniform distribution over \( \mathcal{A} \), and then concatenating them into \( S \). Since the latter method helps us deal with simpler spaces and procedures, we will use it in what follows.
+
 \subsection*{a}
-\subsection*{b}
+Suppose \( S \) is a binary sequence of length \( L \), and \( S_i \) is its \( i\)-th element. The distribution of \( S_i \) is uniform over \( \{0, 1\} \). Given another such independently sampled sequence, \( T \) of length \( L \), the Hamming distance between \( S \) and \( T \) is:
+\[
+    h(S, T) = \sum_{i = 1}^{L} [S_i \neq T_i]
+\]
+where \( [\cdot] \) is the \href{https://en.wikipedia.org/wiki/Iverson_bracket}{\emph{Iverson bracket}}, i.\@e.\@:
+\[
+    [P] =
+    \begin{cases}
+        1 & \text{if P is true} \\
+        0 & \text{otherwise} \\
+    \end{cases}
+\]
+The expected value of the hamming distance, thus is:
+\begin{align*}
+    \E(h(S, T))
+        &= \E \del{\sum_{i = 1}^{L} [S_i \neq T_i]} \\
+        &= \sum_{i = 1}^{L} \E([S_i \neq T_i]) &[\mbox{linearity of } \E] \\
+        &= \sum_{i = 1}^{L} \E([S_i = 0 \wedge T_i = 1 \vee S_i = 1 \wedge T_i = 0]) \\
+        &= \sum_{i = 1}^{L} P(S_i = 0 \wedge T_i = 1 \vee S_i = 1 \wedge T_i = 0) \\
+        &= \sum_{i = 1}^{L} (P(S_i = 0 \wedge T_i = 1) + P(S_i = 1 \wedge T_i = 0)) &[\mbox{disjoint events}]\\
+        &= \sum_{i = 1}^{L} (P(S_i = 0) P(T_i = 1) + P(S_i = 1) P(T_i = 0)) &[\mbox{independent events}]\\
+        &= \sum_{i = 1}^{L} (0.5 \times 0.5 + 0.5 \times 0.5) \\
+        &= L/2
+\end{align*}
+%
+%\subsection*{b}
