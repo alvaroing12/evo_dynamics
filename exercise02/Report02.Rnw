@@ -1,5 +1,6 @@
 \documentclass[a4paper,11pt]{article}
 \usepackage{a4wide, amsmath, amsfonts, amssymb, commath, kerkis}
+\usepackage{hyperref}
 
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 \newcommand{\tltt}[1]{\texttt{\textlatin{#1}}}
@@ -7,6 +8,8 @@
 
 \renewcommand{\labelenumi}{\arabic{enumi}}
 \renewcommand*\thesection{\arabic{section}}
+
+\newcommand{\E}{\mathop{\mathbb E}}
 
 \begin{document}
 
