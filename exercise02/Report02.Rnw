@@ -9,7 +9,8 @@
 \renewcommand{\labelenumi}{\arabic{enumi}}
 \renewcommand*\thesection{\arabic{section}}
 
-\newcommand{\E}{\mathop{\mathbb E}}
+\DeclareMathOperator{\E}{\mathbb{E}}
+\DeclareMathOperator{\Tr}{Tr}
 
 \begin{document}
 
