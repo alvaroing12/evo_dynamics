@@ -71,9 +71,52 @@ for (i in 1:2){
     lines(times, rep(x_star[2], length(times)), col = "black", type="l", lty=2)
   }
 }
-
 @
+
 \subsection*{d}
+For \( f_0 = f_1 = 1 \), we have:
+\begin{align*}
+    \mathbf{x}^{*} (W - \phi I) &= 0 \\
+    \mathbf{x}^*
+    \underbrace{
+        \begin{bmatrix}
+            q - \phi & 1 - q \\
+            1 - q    & q - \phi
+        \end{bmatrix}
+    }_{T} &= 0
+\end{align*}
+The eigenvalues of \( T \) are:
+\begin{align*}
+    \lambda_{1, 2} &= \frac{2q \pm \sqrt{4 q^2 - 4 (2q - 1)}}{2} \\
+                   &= \frac{2q \pm \sqrt{(2q - 2)^2}}{2} \\
+                   &= \frac{2q \pm (2 - 2q)}{2} & [q \leq 1] \\
+                   &= q \pm (1 - q) \\
+    \\
+    \lambda_1 &= 1 \\
+    \lambda_2 &= 2q - 1
+\end{align*}
+When \( q < 1 \), \( \lambda_1 = 1 \) is the largest eigenvalue, and is also equal to \( \phi \). The corresponding equilibrium behaves as follows:
+\begin{align*}
+    \mathbf{x}^*
+    \begin{bmatrix}
+        q - 1 & 1 - q \\
+        1 - q & q - 1
+    \end{bmatrix}
+    &= 0 \\
+    (q - 1) \mathbf{x}^*
+    \begin{bmatrix}
+        1 & -1 \\
+        -1 & 1
+    \end{bmatrix}
+    &= 0 \\
+    \mathbf{x}^* &=
+    \begin{bmatrix}
+        c \\
+        c
+    \end{bmatrix}
+\end{align*}
+for any \( c \in \mathbb{R} \). Since \( \mathbf{x}^* \) contains relative frequencies, \( c = 1/2 \) and thus at equilibrium the population is split evenly between the two species, irrespective of the mutation rate.
+
 \subsection*{e}
 For \( q \to 1 \), we have:
 \begin{align*}
