@@ -41,6 +41,40 @@ Thus, the eigenvalues are the solution of the quadratic equation:
 \[
     \lambda^2 - q (f_0 + 1) \lambda + f_0 (2q - 1) = 0
 \]
+\subsection*{b}
+\subsection*{c}
+We can study the dynamics of the quasiespecies equations for fitness values \( f_{0} \in \{1.1, 1.5\} \) and mutation rates \( q \in \{0.2, 0.5, 0.8\} \). We know from Perron-Frobenius Theorem that the matrix form of the quasiespecies equation has a maximum eigenvalue which determines the equilibrium point of the system \(m^*\). The components of \(m^*\) are those of the eigenvector corresponding to the maximum eigenvalue and it can be seen in the plots below as the dashed black lines. For the different values of \(f_{0}\) and \(q\) we see that the behaviour of the system is altered such that the fitness determines how quickly the populations converge to the stable state, wheareas the mutation rate play a key role in determining the final relative frequencies of the populations. Here is the script:
+<<warning=FALSE>>=
+f0s <- c(1.1, 1.5);
+qs <- c(0.2, 0.5, 0.8);
+par(mfrow=c(2,3));
+for (i in 1:2){
+  for(j in 1:3){
+    q <- qs[j];
+    f0 <- f0s[i];
+    parms <- c(f0 = f0, f1 = 1.0, q_00 = q, q_01 = (1-q), q_10 = (1-q), q_11 = q);
+    times <- c(0:200)/25;
+    initconds <- c(a = 0.75, b = 0.25);
+    M = matrix(c(parms["f0"] * parms["q_00"], parms["f0"] * parms["q_01"], parms["f1"] * parms["q_10"], parms["f1"] * parms["q_11"]), 2, 2);
+    eig = eigen(M);
+    x_star = eig$vectors[, 1]/sum(eig$vectors[, 1]);
+    x_star
+    # Average Fitness corresponds to largest eigenvalue
+    sum(x_star * c(parms["f0"], parms["f1"]));
+    # Solve linear combination of parameters with eigenvalues
+    ivp = solve(eig$vectors, initconds);
+    Xa = ivp[1] * eig$vectors[1, 1] * exp(eig$values[1] * times) + ivp[2] * eig$vectors[1, 2] * exp(eig$values[2] * times);
+    Xb = ivp[1] * eig$vectors[2, 1] * exp(eig$values[1] * times) + ivp[2] * eig$vectors[2, 2] * exp(eig$values[2] * times);
+    title <- paste("f0 = ", toString(f0),", q = ", toString(q), sep="");
+    plot(times, Xa/(Xa + Xb), ylim = c(0, 1), xlab = "time", ylab = "rel. frequency", main = title, col = "dodgerblue", type = "l", lwd = 2)
+    lines(times, Xb/(Xa + Xb), col = "red", lwd = 2)
+    lines(times, rep(x_star[1], length(times)), col = "black", type="l", lty=2)
+    lines(times, rep(x_star[2], length(times)), col = "black", type="l", lty=2)
+  }
+}
+
+@
+\subsection*{d}
 \subsection*{e}
 For \( q \to 1 \), we have:
 \begin{align*}
