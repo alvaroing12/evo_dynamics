@@ -13,6 +13,6 @@ Every amino acid is encoded by a codon of length \( 3 \). Thus, if \( s \) is th
 \]
 Similar to the previous question, there are
 \[
-    \envert{\mathcal{A}_{\mathrm{DNA}}}^{|s|} = 4^{90}
+    \envert{\mathcal{A}_{\mathrm{DNA}}}^{|s|} = 4^{90} = (4^3)^{30} = 64^{30}
 \]
-unique DNA sequences encoding sequences of \( 30 \) amino acids.
+unique DNA sequences encoding sequences of \( 30 \) amino acids. Due to the redundancy of the genetic code, there are more unique DNA sequences than number of unique amino acids sequences.
