@@ -1,4 +1,4 @@
-\section*{Problem 2}
+\section*{Problem 3}
 \subsection*{a}
 We write the full quasispecies equation as follows:
 \begin{align*}
