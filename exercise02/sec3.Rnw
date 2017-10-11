@@ -58,7 +58,6 @@ for (i in 1:2){
     M = matrix(c(parms["f0"] * parms["q_00"], parms["f0"] * parms["q_01"], parms["f1"] * parms["q_10"], parms["f1"] * parms["q_11"]), 2, 2);
     eig = eigen(M);
     x_star = eig$vectors[, 1]/sum(eig$vectors[, 1]);
-    x_star
     # Average Fitness corresponds to largest eigenvalue
     sum(x_star * c(parms["f0"], parms["f1"]));
     # Solve linear combination of parameters with eigenvalues
