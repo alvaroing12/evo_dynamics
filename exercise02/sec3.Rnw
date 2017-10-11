@@ -41,4 +41,42 @@ Thus, the eigenvalues are the solution of the quadratic equation:
 \[
     \lambda^2 - q (f_0 + 1) \lambda + f_0 (2q - 1) = 0
 \]
-\subsection*{b}
+\subsection*{e}
+For \( q \to 1 \), we have:
+\begin{align*}
+    \mathbf{x}^{*} (W - \phi I) &= 0 \\
+    \mathbf{x}^*
+    \underbrace{
+        \begin{bmatrix}
+            f_0 -\phi & 0 \\
+            0         & f_1 - \phi
+        \end{bmatrix}
+    }_{T} &= 0 \\
+\end{align*}
+The eigenvalues of \( T \) are:
+\begin{align*}
+    \lambda_{1, 2} &= \frac{(f_0 + f_1) \pm \sqrt{(f_0 + f_1)^2 - 4 f_0 f_1}}{2} \\
+                   &= \frac{(f_0 + f_1) \pm \sqrt{(f_0 - f_1)^2}}{2} \\
+                   &= \frac{(f_0 + f_1) \pm (f_0 - f_1)}{2} &[f_0 > f_1] \\
+    \\
+    \lambda_1 &= f_0 \\
+    \lambda_2 &= f_1
+\end{align*}
+Thus, as \( q \to 1 \), the largest eigenvalue, \( \lambda_1 \), approaches \( f_0 \). Since, \( \phi \) is equal to the largest eigenvalue, the corresponding equilibrium point as \( q \to 1 \) behaves as follows:
+\begin{align*}
+    \mathbf{x}^*
+    \begin{bmatrix}
+        f_0 - f_0 & 0 \\
+        0         & f_1 - f_0
+    \end{bmatrix}
+    &= 0 \\
+    \mathbf{x}^*
+    \begin{bmatrix}
+        0 & 0 \\
+        0 & f_1 - f_0
+    \end{bmatrix}
+    &= 0 \\
+    \mathbf{x}^* &=
+    \begin{bmatrix} c \\ 0 \end{bmatrix}
+\end{align*}
+for any \( c \in \mathbb{R} \). Since \( \mathbf{x}^* \) is a probability vector, \( c = 1 \) and thus at equilibrium the population with the higher fitness dominates completely and the other one vanishes ('survival of the fittest').
