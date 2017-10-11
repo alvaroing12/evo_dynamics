@@ -38,10 +38,19 @@ We know that \( W \) has \( 2 \) eigenvalues, \( \lambda_0 \) and \( \lambda_1 \
         &= (f_0 + f_1)q
 \end{align*}
 Thus, the eigenvalues are the solution of the quadratic equation:
-\[
-    \lambda^2 - q (f_0 + 1) \lambda + f_0 (2q - 1) = 0
-\]
+
 \subsection*{b}
+A point \( \mathbf{x}^{*} \) is an equilibrium point iff
+\begin{align*}
+    \dot{\mathbf{x}}^* &= 0  \\
+    \mathbf{x}^{*} W - \phi \mathbf{x}^{*} &= 0 \\
+    \mathbf{x}^{*} (W - \phi I) &= 0
+\end{align*}
+This holds iff \( \phi \) is an eigenvalue of \( W \) and \( \mathbf{x}^{*} \) is the corresponding left-eigenvector. Thus \( \phi \in \{\lambda_1, \lambda_2\} \). We know that \( \lambda_{1, 2} \) are either both complex or both real, since they are the roots of a quadratic equation (see above). Given that \( W \) is an irreducible positive square matrix (as long as \( q \neq 1 \)), the Perron-Frobenius theorem holds, and thus \( W \) has a real eigenvalue. Thus, \( \lambda_{1, 2} \) are both real, and one of them is larger than the other, suppose \( \lambda_1 \). According to the theorem, there is a positive eigenvector \( v \) that corresponds to the largest eigenvalue and \emph{all} other positive eigenvectors of \( W \) are multiples of \( v \). Since the non-trivial equilibrium is a strictly positive vector, it must correspond to the largest eigenvalue, thus \( \lambda_1 \) where:
+\[
+    \lambda_1 = \frac{(f_0 + 1) q + \sqrt{(f_0 + 1)^2 q^2 - 4 f_0 (2q - 1)}}{2}
+\]
+
 \subsection*{c}
 We can study the dynamics of the quasiespecies equations for fitness values \( f_{0} \in \{1.1, 1.5\} \) and mutation rates \( q \in \{0.2, 0.5, 0.8\} \). We know from Perron-Frobenius Theorem that the matrix form of the quasiespecies equation has a maximum eigenvalue which determines the equilibrium point of the system \(x^*\). The components of \(x^*\) are those of the eigenvector corresponding to the maximum eigenvalue and it can be seen in the plots below as the dashed black lines. For the different values of \(f_{0}\) and \(q\) we see that the behaviour of the system is altered such that the combination of fitness and mutation rate determines how quickly the populations converge to the stable state and how the final relative frequencies of the populations look like. Here is the script:
 <<warning=FALSE>>=
