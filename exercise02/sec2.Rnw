@@ -24,7 +24,7 @@ Given two elements at the same indices in the two sequences, \( S_i, T_i \), we 
         &= 1 - \sum_{a \in \mathcal{A}} \frac{1}{|\mathcal{A}|} \cdot \frac{1}{|\mathcal{A}|} &[\mbox{uniform sampling}] \\
         &= 1 - \frac{1}{|\mathcal{A}|}
 \end{align*}
-The expected value of the Hamming distance between the sequences, thus is:
+Intuitively, for any position \( S_i \) there are \( |\mathcal{A} - 1| \) choices for \( T_i \) so that the two positions differ. The expected value of the Hamming distance between the sequences, thus is:
 \begin{align*}
     \E(h(S, T))
         &= \E \del{\sum_{i = 1}^{L} [S_i \neq T_i]} \\
