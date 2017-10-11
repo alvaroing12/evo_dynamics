@@ -10,10 +10,10 @@ all: $(NAME).pdf
 
 %.tex: %.Rnw
 	Rscript -e "library(knitr); knit('$<')"
-	sed -i '/\\begin{verbatim}/,/\\end{verbatim}/d' $@
+#	sed -i '/\\begin{verbatim}/,/\\end{verbatim}/d/' $@
 
-$(NAME).pdf: $(NAME).tex $(BIBLIOGRAPHY) $(TEXSECTIONS)
-	@pdflatex $(LATEXFLAGS) $(NAME).tex
+$(NAME).pdf: $(TEXSECTIONS) $(NAME).tex $(BIBLIOGRAPHY)
+	pdflatex $(LATEXFLAGS) $(NAME).tex
 #	-bibtex $(NAME)
 #	-pdflatex $(LATEXFLAGS) $(NAME).tex
 #	-pdflatex $(LATEXFLAGS) $(NAME).tex
