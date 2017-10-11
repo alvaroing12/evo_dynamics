@@ -7,9 +7,9 @@ There are \( 20 \) different amino acids. Since amino acids can be placed indepe
 unique amino acid sequences of length \( 30 \).
 
 \subsection*{b}
-Every amino acid is encoded by a codon of length \( 3 \). Thus, if \( s \) is the DNA sequence which generates an amino acid sequence \( t \), then
+Every amino acid is encoded by a codon of length \( 3 \). Thus, if \( s \) is a DNA sequence which generates an amino acid sequence of length \( L \), then
 \[
-    |s| = 3 |t| = 3 L = 3 \times 30 = 90
+    |s| = 3 L = 90
 \]
 Similar to the previous question, there are
 \[
