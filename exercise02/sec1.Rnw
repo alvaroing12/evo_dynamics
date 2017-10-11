@@ -1,0 +1,18 @@
+\section*{Problem 1}
+\subsection*{a}
+There are \( 20 \) different amino acids. Since amino acids can be placed independently in each position, there are
+\[
+    \underbrace{(20 \times 20 \times \ldots \times 20)}_{L \mbox{ positions}} = 20^{L} = 20^{30}
+\]
+unique amino acid sequences of length \( 30 \).
+
+\subsection*{b}
+Every amino acid is encoded by a codon of length \( 3 \). Thus, if \( s \) is the DNA sequence which generates an amino acid sequence \( t \), then
+\[
+    |s| = 3 |t| = 3 L = 3 \times 30 = 90
+\]
+Similar to the previous question, there are
+\[
+    \envert{\mathcal{A}_{\mathrm{DNA}}}^{|s|} = 4^{90}
+\]
+unique DNA sequences encoding sequences of \( 30 \) amino acids.

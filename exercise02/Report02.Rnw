@@ -1,5 +1,6 @@
 \documentclass[a4paper,11pt]{article}
 \usepackage{a4wide, amsmath, amsfonts, amssymb, commath, kerkis}
+\usepackage{hyperref}
 
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 \newcommand{\tltt}[1]{\texttt{\textlatin{#1}}}
@@ -7,6 +8,9 @@
 
 \renewcommand{\labelenumi}{\arabic{enumi}}
 \renewcommand*\thesection{\arabic{section}}
+
+\DeclareMathOperator{\E}{\mathbb{E}}
+\DeclareMathOperator{\Tr}{Tr}
 
 \begin{document}
 
@@ -35,7 +39,7 @@ options(tidy=TRUE,width=62)
 \begin{minipage}{0.4\textwidth}
 \flushleft
 \textsc{\Huge Evolutionary Dynamics 2017} \\[0.7cm]
-{\Large Exercise Set 1} \\
+{\Large Exercise Set 2} \\
 {\Large \today}
 \end{minipage}
 \hfill
@@ -59,6 +63,7 @@ Nikolaos Korasidis \\
 
 \include{sec1}
 \include{sec2}
+\include{sec3}
 
 %\bibliographystyle{abbrv}
 %\bibliography{bibliografia}
