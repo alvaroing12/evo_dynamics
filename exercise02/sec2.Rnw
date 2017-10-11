@@ -45,12 +45,12 @@ Applying this formula, we obtain the following results:
 \end{enumerate}
 
 \subsection*{b}
-Suppose a sequence \( S \in \mathcal{A}^L \). A sequence \( T \in \mathcal{A}^L \) is at Hamming distance \( K \) from \( S \) iff it differs in \emph{exactly} \( K \) indices from \( S \). There are \( \binom{K}{L} \) ways to pick the indices. For such an index \( i \), we can choose \( T_i \) from the set \( \mathcal{A}\setminus\{S_i\} \); there are obviously \( |\mathcal{A}| - 1 \) choices. The choice in each of these \( K \) indices is independent, therefore, the total number of sequences at Hamming distance \( K \) from \( S \) is:
+Suppose a sequence \( S \in \mathcal{A}^L \). A sequence \( T \in \mathcal{A}^L \) is at Hamming distance \( K \) from \( S \) iff it differs in \emph{exactly} \( K \) indices from \( S \). There are \( \binom{L}{K} \) ways to pick the indices. For such an index \( i \), we can choose \( T_i \) from the set \( \mathcal{A}\setminus\{S_i\} \); there are obviously \( |\mathcal{A}| - 1 \) choices. The choice in each of these \( K \) indices is independent, therefore, the total number of sequences at Hamming distance \( K \) from \( S \) is:
 \[
-    \binom{K}{L} (|\mathcal{A}| - 1)^{K}
+    \binom{L}{K} (|\mathcal{A}| - 1)^{K}
 \]
 Applying this formula, we obtain the following results:
 \begin{enumerate}
-    \item For every binary sequence \( S \) of length \( L \), there are \( L \) sequences at Hamming distance \( 1 \) and \( \binom{K}{L} \) sequences at distance \( K \).
+    \item For every binary sequence \( S \) of length \( L \), there are \( L \) sequences at Hamming distance \( 1 \) and \( \binom{L}{K} \) sequences at distance \( K \).
     \item For every DNA sequence \( S \) of length \( L \), there are \( 3 L \) sequences at Hamming distance \( 1 \) and \( 3^K \binom{K}{L} \) sequences at distance \( K \).
 \end{enumerate}
