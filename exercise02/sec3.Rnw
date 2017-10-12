@@ -53,7 +53,7 @@ This holds iff \( \phi \) is an eigenvalue of \( W \) and \( \mathbf{x}^{*} \) i
 
 \subsection*{c}
 We study the dynamics of the quasispecies equation for fitness values \( f_{0} \in \{1.1, 1.5\} \) and mutation rates \( (1 - q) \in \{0.2, 0.5, 0.8\} \). We know from Perron-Frobenius Theorem that the matrix form of the equation has a maximum real eigenvalue, and that any non-trivial equilibrium point of the system, \(x^*\), is a corresponding (left-)eigenvector. In the plots below, the components of \( x^{*} \) are depicted as dashed black lines. As we see, different values of fitness \(f_{0}\) and mutation rate \(1 - q\) alter the behaviour of the system by determining how quickly the populations converge to the stable state and what are their relative frequencies in the limit. To produce our simulations, we used the following script.
-<<warning=FALSE, size='small'>>=
+<<warning=FALSE>>=
 f0s <- c(1.1, 1.5);
 qs <- c(0.2, 0.5, 0.8);
 par(mfrow=c(2,3));
@@ -80,13 +80,14 @@ for (i in 1:2){
          ivp[2] * eig$vectors[1, 2] * exp(eig$values[2] * times);
     Xb = ivp[1] * eig$vectors[2, 1] * exp(eig$values[1] * times) +
          ivp[2] * eig$vectors[2, 2] * exp(eig$values[2] * times);
-    title <- paste("f0 = ", toString(f0),", q = ", toString(q), sep="");
+    title <- paste("f0 =",toString(f0),", q =",toString(q));
     plot(times, Xa/(Xa + Xb), ylim = c(0, 1),
          xlab = "time", ylab = "rel. frequency", main = title,
          col = "dodgerblue", type = "l", lwd = 2)
     lines(times, Xb/(Xa + Xb), col = "red", lwd = 2)
-    lines(times, rep(x_star[1],length(times)),col="black",type="l",lty=2)
-    lines(times, rep(x_star[2],length(times)),col="black",type="l",lty=2)
+    ltimes=length(times);
+    lines(times, rep(x_star[1],ltimes),col="black",type="l",lty=2)
+    lines(times, rep(x_star[2],ltimes),col="black",type="l",lty=2)
   }
 }
 @
