@@ -82,6 +82,8 @@ for (i in 1:2){
 }
 @
 
+\clearpage
+
 \subsection*{d}
 For \( f_0 = f_1 = 1 \), we have:
 \begin{align*}
@@ -126,6 +128,7 @@ When \( q < 1 \), \( \lambda_1 = 1 \) is the largest eigenvalue, and is also equ
 \end{align*}
 for any \( c \in \mathbb{R} \). Since \( \mathbf{x}^* \) contains relative frequencies, \( c = 1/2 \) and thus at equilibrium the population is split evenly between the two species, irrespective of the mutation rate.
 
+\clearpage
 \subsection*{e}
 For \( q \to 1 \), we have:
 \begin{align*}
