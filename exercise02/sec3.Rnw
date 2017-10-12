@@ -85,18 +85,7 @@ for (i in 1:2){
 \clearpage
 
 \subsection*{d}
-For \( f_0 = f_1 = 1 \), we have:
-\begin{align*}
-    \mathbf{x}^{*} (W - \phi I) &= 0 \\
-    \mathbf{x}^*
-    \underbrace{
-        \begin{bmatrix}
-            q - \phi & 1 - q \\
-            1 - q    & q - \phi
-        \end{bmatrix}
-    }_{T} &= 0
-\end{align*}
-The eigenvalues of \( T \) are:
+For \( f_0 = f_1 = 1 \), the eigenvalues of \( W \) are:
 \begin{align*}
     \lambda_{1, 2} &= \frac{2q \pm \sqrt{4 q^2 - 4 (2q - 1)}}{2} \\
                    &= \frac{2q \pm \sqrt{(2q - 2)^2}}{2} \\
@@ -108,6 +97,13 @@ The eigenvalues of \( T \) are:
 \end{align*}
 When \( q < 1 \), \( \lambda_1 = 1 \) is the largest eigenvalue, and is also equal to \( \phi \). The corresponding equilibrium behaves as follows:
 \begin{align*}
+    \mathbf{x}^{*} (W - \phi I) &= 0 \\
+    \mathbf{x}^*
+    \begin{bmatrix}
+        q - \phi & 1 - q \\
+        1 - q    & q - \phi
+    \end{bmatrix}
+    &= 0 \\
     \mathbf{x}^*
     \begin{bmatrix}
         q - 1 & 1 - q \\
