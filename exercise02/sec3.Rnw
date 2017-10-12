@@ -36,7 +36,7 @@ We know that \( W \) has \( 2 \) eigenvalues, \( \lambda_1 \) and \( \lambda_2 \
     &= \lambda^2 - (f_0 + f_1) q \lambda + f_0 f_1 (2q - 1) \\
     \\
     \lambda_{1, 2} &= \frac{(f_0 + f_1) q \pm \sqrt{(f_0 + f_1)^2 q^2 - 4 f_0 f_1 (2q - 1)}}{2} \\
-                   &= \frac{(f_0 + 1) q \pm \sqrt{(f_0 + 1)^2 q^2 - 4 f_0 (2q - 1)}}{2} &[f_1 = 1] \\
+                   &= \frac{(f_0 + 1) q \pm \sqrt{(f_0 + 1)^2 q^2 - 4 f_0 (2q - 1)}}{2} &[f_1 = 1]
 \end{align*}
 
 \subsection*{b}
@@ -52,7 +52,7 @@ This holds iff \( \phi \) is an eigenvalue of \( W \) and \( \mathbf{x}^{*} \) i
 \]
 
 \subsection*{c}
-We can study the dynamics of the quasiespecies equations for fitness values \( f_{0} \in \{1.1, 1.5\} \) and mutation rates \( q \in \{0.2, 0.5, 0.8\} \). We know from Perron-Frobenius Theorem that the matrix form of the quasiespecies equation has a maximum eigenvalue which determines the equilibrium point of the system \(x^*\). The components of \(x^*\) are those of the eigenvector corresponding to the maximum eigenvalue and it can be seen in the plots below as the dashed black lines. For the different values of \(f_{0}\) and \(q\) we see that the behaviour of the system is altered such that the combination of fitness and mutation rate determines how quickly the populations converge to the stable state and how the final relative frequencies of the populations look like. Here is the script:
+We study the dynamics of the quasispecies equation for fitness values \( f_{0} \in \{1.1, 1.5\} \) and mutation rates \( (1 - q) \in \{0.2, 0.5, 0.8\} \). We know from Perron-Frobenius Theorem that the matrix form of the equation has a maximum real eigenvalue, and that any non-trivial equilibrium point of the system, \(x^*\), is a corresponding (left-)eigenvector. In the plots below, the components of \( x^{*} \) are depicted as dashed black lines. As we see, different values of fitness \(f_{0}\) and mutation rate \(1 - q\) alter the behaviour of the system by determining how quickly the populations converge to the stable state and what are their relative frequencies in the limit. To produce our simulations, we used the following script.
 <<warning=FALSE>>=
 f0s <- c(1.1, 1.5);
 qs <- c(0.2, 0.5, 0.8);
@@ -110,7 +110,13 @@ When \( q < 1 \), \( \lambda_1 = 1 \) is the largest eigenvalue, and is also equ
         1 - q & q - 1
     \end{bmatrix}
     &= 0 \\
-    (q - 1) \mathbf{x}^*
+    \mathbf{x}^* (q - 1)
+    \begin{bmatrix}
+        1 & -1 \\
+        -1 & 1
+    \end{bmatrix}
+    &= 0 \\
+    \mathbf{x}^*
     \begin{bmatrix}
         1 & -1 \\
         -1 & 1
