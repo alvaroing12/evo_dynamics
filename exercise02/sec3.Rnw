@@ -126,18 +126,7 @@ for any \( c \in \mathbb{R} \). Since \( \mathbf{x}^* \) contains relative frequ
 
 \clearpage
 \subsection*{e}
-For \( q \to 1 \), we have:
-\begin{align*}
-    \mathbf{x}^{*} (W - \phi I) &= 0 \\
-    \mathbf{x}^*
-    \underbrace{
-        \begin{bmatrix}
-            f_0 -\phi & 0 \\
-            0         & f_1 - \phi
-        \end{bmatrix}
-    }_{T} &= 0
-\end{align*}
-The eigenvalues of \( T \) are:
+For \( q \to 1 \), the eigenvalues of \( W \) are:
 \begin{align*}
     \lambda_{1, 2} &= \frac{(f_0 + f_1) \pm \sqrt{(f_0 + f_1)^2 - 4 f_0 f_1}}{2} \\
                    &= \frac{(f_0 + f_1) \pm \sqrt{(f_0 - f_1)^2}}{2} \\
@@ -148,6 +137,13 @@ The eigenvalues of \( T \) are:
 \end{align*}
 Thus, as \( q \to 1 \), the largest eigenvalue, \( \lambda_1 \), approaches \( f_0 \). Since, \( \phi \) is equal to the largest eigenvalue, the corresponding equilibrium point as \( q \to 1 \) behaves as follows:
 \begin{align*}
+    \mathbf{x}^{*} (W - \phi I) &= 0 \\
+    \mathbf{x}^*
+    \begin{bmatrix}
+        f_0 -\phi & 0 \\
+        0         & f_1 - \phi
+    \end{bmatrix}
+    &= 0 \\
     \mathbf{x}^*
     \begin{bmatrix}
         f_0 - f_0 & 0 \\
