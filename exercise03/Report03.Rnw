@@ -1,0 +1,71 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{a4wide, amsmath, amsfonts, amssymb, commath, kerkis}
+\usepackage{hyperref}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\tltt}[1]{\texttt{\textlatin{#1}}}
+\newcommand{\tlsc}[1]{\textsc{\textlatin{#1}}}
+
+\renewcommand{\labelenumi}{\arabic{enumi}}
+\renewcommand*\thesection{\arabic{section}}
+
+\DeclareMathOperator{\E}{\mathbb{E}}
+\DeclareMathOperator{\Tr}{Tr}
+
+\begin{document}
+
+<<setup, include=FALSE, cache=FALSE>>=
+# set global chunk options
+opts_chunk$set(comment="",tidy=TRUE,message=FALSE,warning=FALSE,echo=TRUE,cache=FALSE,
+fig.align='center', fig.show='hold', fig.width=3.5, fig.height=3.5)
+#tidy.opts=list(keep.blank.line=FALSE)
+#options(replace.assign=TRUE, width.cutoff=60)
+knitr::opts_knit$set(global.par = TRUE)
+options(tidy=TRUE,width=62)
+#dep_prev()
+@
+
+\begin{titlepage}
+\centering
+
+\begin{figure}[!ht]
+    \includegraphics[width=0.40\textwidth]{ETH.png}
+    \hfill
+    \includegraphics[width=0.40\textwidth]{DBSSE.png}
+\end{figure}
+
+\HRule \\[0.5cm]
+
+\begin{minipage}{0.4\textwidth}
+\flushleft
+\textsc{\Huge Evolutionary Dynamics 2017} \\[0.7cm]
+{\Large Exercise Set 3} \\
+{\Large \today}
+\end{minipage}
+\hfill
+\begin{minipage}{0.4\textwidth}
+\raggedright
+\large
+Jorge Bretones Santamarina \\
+\texttt{16-932-162} \\
+\texttt{jorgeb@student.ethz.ch} \\[0.3cm]
+Alvaro Ingold \\
+\texttt{16-932-844} \\
+\texttt{ialvaro@student.ethz.ch} \\[0.3cm]
+Nikolaos Korasidis \\
+\texttt{16-923-055} \\
+\texttt{nkorasid@student.ethz.ch}
+\end{minipage}
+\end{titlepage}
+
+\pagestyle{myheadings}
+\markboth{Exercise Set 1}{Evolutionary Dynamics}
+
+%\include{sec1}
+\include{sec2}
+%\include{sec3}
+
+%\bibliographystyle{abbrv}
+%\bibliography{bibliografia}
+%\include{sections/appendix}
+\end{document}
