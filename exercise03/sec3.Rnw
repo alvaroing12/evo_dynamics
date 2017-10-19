@@ -1,5 +1,35 @@
 \section*{Problem 3}
 \subsection*{a}
+As seen in Lecture 4 - Slide 15. We have a Moran Process with:
+- N = 1000.
+- Mutants arise with probability \(\mu\) and have a relative fitness r (r < 1 being deleterious).
+- Mutatns decrease fitness by 1%
+
+Therefore: 
+r = 0.99
+
+The fixation probability (See lecture 4, slide 15) is:
+(INSERT HERE EQUATION OF PEN AND PAPER EXERCISE) = 4.36E-10
 \subsection*{b}
+Probability for a motation at one site is 10E-5
+Probability of acquiring at least one mutation can be described as:
+P(X>=1) = 1 - P(X < 1),
+where P(X<1) is the probability of acquiring NO mutations at all.
+
+At each site, we have by definition that the probability of no mutation is the complementary to 10E-5:
+P(X<1) = 1 - 10E-5
+
+Therefore, for all possible 10E6 sites in the genome we have:
+P(X<1) = (1 - 10E-5)^10E6 = 0
+
+Thus for the whole genome:
+P(X >= 1) = 1 - P(X<1) = 1
+
+In conclusion, it is almost certain that at least one mutation will occur in the genome.
+
 \subsection*{c}
+For this population, given that P(X>=1) = 1, all individuals will end up acquiring the deleterious mutation (i.e. fixation). This could mean that for the long term, the whole population can become extinct.
+
 \subsection*{d}
+In natural populations, we don't have the finite effects of the Moran process. That is, we have populations that have a dynamic size (growing or shrinking) and thus not being fixed as in the Moran process, we dont have a perfect scenario in which for every generation an individual dies and another is reproduced. This means that such deleterious mutations are much more difficult to fixate, leaving the fitter subpopulations as dominant.
+Finally, it is worth noting that depending on other characteristics of the populations as well as the time it takes to fixate a mutation, this may never actually occur in real life, even if the fixation probability is 1 or close to 1. For example, in viruses, even if a mutation has \(\rho = 1\), the actual time it takes for that to happe (i.e. P(t)) can be so large that in reality the genome undergoes many more mutations and the fixation never happens.
