@@ -10,6 +10,7 @@
 \renewcommand*\thesection{\arabic{section}}
 
 \DeclareMathOperator{\E}{\mathbb{E}}
+\DeclareMathOperator{\Var}{\mathrm{Var}}
 \DeclareMathOperator{\Tr}{Tr}
 
 \begin{document}
@@ -61,9 +62,9 @@ Nikolaos Korasidis \\
 \pagestyle{myheadings}
 \markboth{Exercise Set 1}{Evolutionary Dynamics}
 
-%\include{sec1}
+\include{sec1}
 \include{sec2}
-%\include{sec3}
+\include{sec3}
 
 %\bibliographystyle{abbrv}
 %\bibliography{bibliografia}
