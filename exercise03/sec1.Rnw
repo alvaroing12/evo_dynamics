@@ -1,5 +1,51 @@
 \section*{Problem 1}
 \subsection*{a}
+We assume that the Moran process is described by a population of size \( N \) and a tridiagonal transition matrix \( \mathbf{P} = (P_{i,j}) = \Pr[X(t + 1) = j \mid X(t) = i] \). Assuming that at time \( t \) we are at state \( i \), we calculate the expected value of the next state:
+\begin{align*}
+    \E[X(t + 1) \mid X(t) = i]
+        &= \sum_{j = i - 1}^{i + 1} j P_{i, j} \\
+        &= (i - 1) P_{i, i - 1} + i P_{i, i} + (i + 1) P_{i, i + 1} \\
+        &= i (P_{i, i - 1} + P_{i, i} + P_{i, i + 1}) - P_{i, i - 1} + P_{i, i + 1} \\
+        &= i - \frac{i}{N} \frac{N - i}{N} + \frac{N - i}{N} \frac{i}{N} &[\mbox{\( \mathbf{P} \) is row-stochastic}] \\
+        &= i
+\end{align*}
+Applying the law of total expectation, \( \E_{Y}[Y] = \E_{Z}[\E_{Y}[Y \mid Z]] \) for \( Y = X(t + 1) \) and \( Z = X(t) \):
+\begin{align*}
+    \E[X(t + 1) \mid X(t)]
+        &= \E[\E[X(t + 1) \mid X(t) = i]] \\
+        &= \sum_{i = 0}^{N} \E[X(t + 1) \mid X(t) = i] \Pr[X(t) = i] \\
+        &= \sum_{i = 0}^{N} i \Pr[X(t) = i] \\
+        &= \E[X(t)] &[\mbox{by definition of \( \E[\cdot] \)}]
+\end{align*}
+The Moran process is a memoryless time-homogenous Markov process and therefore
+\[
+    \forall t > 0: \Pr[X(t + 1) = j \mid X(t) = i] = \Pr[X(1) = j \mid X(0) = i] = P_{i, j}
+\]
+that is, the distribution of  \( X(t) \) given \( X(t - 1) \) does not depend on \( t \). This extends to aggregate measures of this distribution, for example the expected value and the variance. Thus:
+\[
+    \forall t > 0: \E[X(t + 1) \mid X(t) = i] = \E[X(1) \mid X(0) = i]
+\]
+We can now prove the formula requested by induction on \( t \). For \( t = 0 \), it trivially holds that
+\[
+    \E[X(0) | X(0) = i] = i
+\]
+Suppose the formula holds for all nonnegative \( t \) less than \( s \). Then:
+\footnotesize
+\begin{align*}
+    \E[X(s) \mid X(0) = i]
+        &= \sum_{j = 0}^{N} j \Pr[X(s) = j \mid X(0) = i] \\
+        &= \sum_{q = 0}^{N} \sum_{j = 0}^{N} j \Pr[X(s) = j \mid X(s - 1) = q, X(0) = i] \Pr[X(s - 1) = q \mid X(0) = i]\\
+        &= \sum_{q = 0}^{N} \sum_{j = 0}^{N} j \Pr[X(s) = j \mid X(s - 1) = q] \Pr[X(s - 1) = q \mid X(0) = i] &[\mbox{Markov property}] \\
+        &= \sum_{q = 0}^{N} \Pr[X(s - 1) = q \mid X(0) = i] \sum_{j = 0}^{N} j \Pr[X(s) = j \mid X(s - 1) = q] \\
+        &= \sum_{q = 0}^{N} \Pr[X(s - 1) = q \mid X(0) = i] \E[X(s) \mid X(s - 1) = q] \\
+        &= \sum_{q = 0}^{N} \Pr[X(s - 1) = q \mid X(0) = i] \E[X(1) \mid X(0) = q] \\
+        &= \sum_{q = 0}^{N} q \Pr[X(s - 1) = q \mid X(0) = i] \\
+        &= \E[X(s - 1) \mid X(0) = i] \\
+        &= i &[\mbox{inductive hypothesis}]
+\end{align*}
+\normalsize
+Since we proved the base step and the inductive step, the proof is complete.
+
 \subsection*{b}
 \subsection*{c}
 Let
