@@ -1,4 +1,100 @@
 \section*{Problem 2}
+The transition matrix \( P = [P_{ij}] \), where \( P_{ij} = \Pr[X(t + 1) = j \mid X(t) = i] \) looks as follows:
+\[
+    P =
+    \begin{bmatrix}
+        1 & 0 & 0 & \ldots & 0 \\
+        \beta_1 & (1 - \alpha_1 - \beta_1) & \alpha_1 & \ldots & 0 \\
+        0 & \beta_2 & (1 - \alpha_2 - \beta_2) & \ldots & 0 \\
+        0 & 0 & \beta_3 & \ldots & \vdots \\
+        \vdots & \vdots & \vdots & \ddots & \alpha_{N-1} \\
+        0 & 0 & 0 & \ldots & 1 \\
+    \end{bmatrix}
+\]
+Since the states \( x_0 \) and \( x_N \) are absorbing, we will use the following notation for consistency and simplicity:
+\[
+    \alpha_0 = \beta_N = 0
+\]
 \subsection*{a}
+\subsubsection*{i}
+Let \( x_i \) be the probability of fixation of type \( B \) if we begin from a population with \( i \) individuals of type \( A \). Suppose the state succeeding \( i \) in the chain is \( j \). Then, it must hold that:
+\begin{align*}
+    x_i
+        &= \sum_{j = 0}^{N} \Pr[\mbox{fixation beginning from state \( j \)}] \cdot P_{i, j} \\
+        &= \sum_{j = 0}^{N} x_j P_{i, j}
+\end{align*}
+which is shorthand for the equation \( x = Px \) or, equivalently, \( (P - I)x = 0 \).
+
+\subsubsection*{ii}
+Let \( y_{i} = x_{i} - x_{i - 1}, i \in \{1, \ldots, N\} \). It is easy to see that the first and the last row of \( P - I \) are zeros. Thus the equation \( (P - I)x = 0\) is equivalent to a system of \( N - 1 \) linear equations of the form
+\begin{align*}
+    \beta_{i} x_{i - 1} - (\alpha_{i} + \beta_{i}) x_{i} + \alpha_{i} x_{i + 1} &= 0 &[i \in \{1, \ldots, N - 1\}]\\
+    - \beta_{i} (x_{i} - x_{i - 1}) + \alpha_{i} (x_{i + 1} - x_{i}) &= 0 \\
+    - \beta_{i} y_{i} + \alpha_{i} y_{i + 1} &= 0 \\
+    y_{i + 1} &= \beta_{i}/\alpha_{i} y_{i} \\
+    y_{i + 1} &= \gamma_{i} y_{i} &[\gamma_i = \beta_i/\alpha_i]
+\end{align*}
+This gives us all values of \( y_i \) except \( y_1 \). However, we know that \( x_0 \) is the probability of \( B \) reaching fixation beginning from an all-\( A \) population, so it must be equal to \( 0 \). Thus, we calculate:
+\[
+    y_1 = x_1 - x_0 = x_1
+\]
+
+\subsubsection*{iii}
+\begin{align*}
+    \sum_{i = 1}^{l} y_i
+        &= \sum_{i = 1}^{l} \del{x_{i} - x_{i - 1}} \\
+        &= \sum_{i = 1}^{l} x_{i} - \sum_{i = 1}^{l} x_{i - 1} \\
+        &= x_l - x_0 \\
+        &= x_l
+\end{align*}
+
+\subsubsection*{iii}
+Since \( y_1 = x_1 \) and \( \forall i \in [1, N - 1]: y_{i + 1} = \gamma_{i} y_{i} \) it follows by induction that:
+\begin{align*}
+    y_{i} &= y_1 \prod_{j = 1}^{i - 1} \gamma_{j} \\
+          &= x_1 \prod_{j = 1}^{i - 1} \gamma_{j} \\
+    \\
+    x_{l} &= \sum_{i = 1}^{l} y_{i} \\
+          &= \sum_{i = 1}^{l} \del{x_1 \prod_{j = 1}^{i - 1} \gamma_{j}} \\
+          &= x_1 \sum_{i = 1}^{l} \prod_{j = 1}^{i - 1} \gamma_{j} \\
+          &= x_1 \sum_{i = 0}^{l - 1} \prod_{j = 1}^{i} \gamma_{j} &[\mbox{change of indices}] \\
+          &= x_1 \del{1 + \sum_{i = 1}^{l - 1} \prod_{j = 1}^{i} \gamma_{j}}
+\end{align*}
+where the last line is obtained by noting that the empty product \( \prod_{i = 1}^{0} (\cdot) \) is equal to \( 1 \) by definition. The probability of reaching fixation if we begin from the fixated state is \( 1 \), therefore:
+\begin{align*}
+    x_N &= 1 \\
+    x_1 \del{1 + \sum_{i = 1}^{N - 1} \prod_{j = 1}^{i} \gamma_{j}} &= 1 \\
+    x_1 &= \frac{1}{1 + \sum_{i = 1}^{N - 1} \prod_{j = 1}^{i} \gamma_{j}}
+\end{align*}
+and thus, by substitution,
+\[
+    x_i = \frac{1 + \sum_{i = 1}^{l - 1} \prod_{j = 1}^{i} \gamma_{j}}{1 + \sum_{i = 1}^{N - 1} \prod_{j = 1}^{i} \gamma_{j}}
+\]
+
 \subsection*{b}
-\end{enumerate}
+For the Moran process, we notice that
+\begin{align*}
+    \gamma_i
+        &= \beta_i / \alpha_i \\
+        &= \frac{P_{i, i-1}}{P_{i, i+1}} \\
+        &= \left. \frac{(N - i)i}{(r i + N - i)N} \middle/ \frac{ri(N - i)}{(r i + N - i)N} \right. \\
+        &= 1/r \\
+    \\
+    x_1
+        &= \frac{1 + \sum_{i = 1}^{1 - 1} \prod_{j = 1}^{i} (1/r)}{1 + \sum_{i = 1}^{N - 1} \prod_{j = 1}^{i} (1/r)} \\
+        &= \frac{1}{1 + \sum_{i = 1}^{N - 1} (1/r)^i} &\sbr{\sum_{i = 1}^{0}(\cdot) = 0}\\
+        &= \frac{1}{\sum_{i = 0}^{N - 1} (1/r)^i} \\
+        &= \frac{1}{\frac{1-(1/r)^N}{1 - 1/r}} &[\mbox{geometric series}] \\
+        &= \frac{1 - 1/r}{1 - 1/r^N} \\
+\end{align*}
+To find the limit of \( x_1 \) as \( r \to 1 \) we use the expression obtained earlier,
+\[
+    x_1 = \frac{1}{1 + \sum_{i = 1}^{N - 1} (1/r)^i} \\
+\]
+Restricting ourselves to \( r \in (0, \infty) \), we find that the denominator is a sum of positive continuous functions, thus the whole expression is continuous, and the limit can be obtained by substituting \( r = 1 \):
+\begin{align*}
+    \lim_{r \to 1} x_1
+        &= \frac{1}{1 + \sum_{i = 1}^{N - 1} (1/1)^i} \\
+        &= \frac{1}{N}
+\end{align*}
+which is exactly as expected for two populations of equal fitness.
