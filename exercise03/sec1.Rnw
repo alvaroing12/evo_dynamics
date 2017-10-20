@@ -2,3 +2,15 @@
 \subsection*{a}
 \subsection*{b}
 \subsection*{c}
+Let
+\[
+    f(N) = V_1 \frac{1 - (1 - 2/N^2)^t}{2/N^2}
+\]
+When \( N \gg 1 \), then \( 2/N^2 \ll 1 \) and thus we can employ the binomial approximation:
+\begin{align*}
+    f(N)
+        &= V_1 \frac{1 - (1 - 2/N^2)^t}{2/N^2} \\
+        &\approx V_1 \frac{1 - (1 - 2t/N^2)}{2/N^2} \\
+        &= V_1 \frac{2t/N^2}{2/N^2} \\
+        &= V_1 t
+\end{align*}
