@@ -47,6 +47,66 @@ Suppose the formula holds for all nonnegative \( t \) less than \( s \). Then:
 Since we proved the base step and the inductive step, the proof is complete.
 
 \subsection*{b}
+\subsubsection*{i}
+\[
+    \forall t > 0: \Var[X(t + 1) \mid X(t) = i] = \Var[X(1) \mid X(0) = i]
+\]
+We note that \( \Var[X] = \E[(X - \E[X])^2] = \E[X^2] - \E[X]^2 \) and proceed as follows:
+\begin{align*}
+    \E[X^2(1) \mid X(0) = i]
+        &= \sum_{j = i - 1}^{i + 1} j^2 P_{i, j} \\
+        &= (i - 1)^2 P_{i, i - 1} + i^2 P_{i, i} + (i + 1)^2 P_{i, i + 1} \\
+        &= i^2 (P_{i, i - 1} + P_{i, i} + P_{i, i + 1}) - (2i - 1) P_{i, i - 1} + (2i + 1) P_{i, i + 1} \\
+        &= i^2 - (2i - 1) \frac{i}{N} \frac{N - i}{N} + (2i + 1) \frac{N - i}{N} \frac{i}{N} \\
+        &= i^2 + 2 \frac{i(N - i)}{N^2} \\
+        &= i^2 + 2 \frac{i}{N} \frac{N - i}{N} \\
+    \\
+    \E[X(1) \mid X(0) = i] &= i \\
+    \\
+    V_1(i)
+        &= \Var[X(1) \mid X(0) = i] \\
+        &= \E[X^2(1) \mid X(0) = i] - (\E[X(1) \mid X(0) = i])^2 \\
+        &= i^2 + 2 \frac{i}{N} \frac{N - i}{N} - i^2 \\
+        &= 2 \frac{i}{N} \frac{N - i}{N} \\
+        &= 2 i/N \del{1 - i/N}
+\end{align*}
+\subsubsection*{ii}
+To derive the variance of \( X(t) \) given \( X(0) = i \) we use the law of total variance,
+\[
+    \Var[Y] = \E_Z[\Var_Y[Y \mid Z]] + \Var_Z[\E_Y[Y \mid Z]]
+\]
+and substitute, as before, \( Y = X(t + 1) \) and \( Z = X(t) \):
+\[
+    \Var[Y] = \E_Z[\Var_Y[Y \mid Z]] + \Var_Z[\E_Y[Y \mid Z]]
+\]
+\begin{align*}
+    \Var_Y[Y \mid Z = i]
+        &= \Var[X(t + 1) \mid X(t) = i] \\
+        &= \Var[X(1) \mid X(0) = i] \\
+        &= V_1(i) \\
+    \\
+    \E_Z[\Var_Y[Y \mid Z]]
+        &=\sum_{i = 0}^{N} \Pr[Z = i] \Var_Y[Y \mid Z = i] \\
+        &=\sum_{i = 0}^{N} \Pr[X(t) = i] \Var[X(t + 1) \mid X(t) = i] \\
+        &=\sum_{i = 0}^{N} \Pr[X(t) = i] V_1(i) \\
+        &=2/N\sum_{i = 0}^{N} \Pr[X(t) = i] \del{i - i^2/N} \\
+        &=2/N(\E[X(t)] - \E[X^2(t)]/N)
+    \\
+    \E_Y[Y \mid Z = i]
+        &= \E[X(t + 1) \mid X(t) = i] \\
+        &= i \\
+    \\
+    \Var_Z[\E_Y[Y \mid Z]]
+        \E_Z[(\E_Y[Y \mid Z])^2] - (\E_Z[\E_Y[Y \mid Z]])^2 \\
+        \E_Z[(\E_Y[Y \mid Z])^2] - (\E_Y[Y])^2 \\
+        \E[(\E[X(t + 1) \mid X(t)])^2] - (\E[X(t + 1)])^2 \\
+        \E[(\E[X(t))^2] - (\E[X(t + 1)])^2 \\
+        &=
+\end{align*}
+
+\subsubsection*{iii}
+
+
 \subsection*{c}
 Let
 \[
