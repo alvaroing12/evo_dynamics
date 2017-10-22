@@ -44,64 +44,77 @@ Since we proved the base step and the inductive step, the proof is complete.
 
 \subsection*{b}
 \subsubsection*{i}
+Similar to the expression for \( \E \), we have:
 \[
     \forall t > 0: \Var[X(t + 1) \mid X(t) = i] = \Var[X(1) \mid X(0) = i]
 \]
-We note that \( \Var[X] = \E[(X - \E[X])^2] = \E[X^2] - \E[X]^2 \) and proceed as follows:
+We compute \( \Var[X(1) \mid X(0) = i] \) by utilizing the definition of variance:
 \begin{align*}
-    \E[X^2(1) \mid X(0) = i]
-        &= \sum_{j = i - 1}^{i + 1} j^2 P_{i, j} \\
-        &= (i - 1)^2 P_{i, i - 1} + i^2 P_{i, i} + (i + 1)^2 P_{i, i + 1} \\
-        &= i^2 (P_{i, i - 1} + P_{i, i} + P_{i, i + 1}) - (2i - 1) P_{i, i - 1} + (2i + 1) P_{i, i + 1} \\
-        &= i^2 - (2i - 1) \frac{i}{N} \frac{N - i}{N} + (2i + 1) \frac{N - i}{N} \frac{i}{N} \\
-        &= i^2 + 2 \frac{i(N - i)}{N^2} \\
-        &= i^2 + 2 \frac{i}{N} \frac{N - i}{N} \\
-    \\
-    \E[X(1) \mid X(0) = i] &= i \\
-    \\
-    V_1(i)
-        &= \Var[X(1) \mid X(0) = i] \\
+    \Var[X(1) \mid X(0) = i]
         &= \E[X^2(1) \mid X(0) = i] - (\E[X(1) \mid X(0) = i])^2 \\
-        &= i^2 + 2 \frac{i}{N} \frac{N - i}{N} - i^2 \\
-        &= 2 \frac{i}{N} \frac{N - i}{N} \\
-        &= 2 i/N \del{1 - i/N}
+        &= \del{\sum_{j = i - 1}^{i + 1} j^2 P_{i, j}} - i^2 \\
+        &= (i - 1)^2 P_{i, i - 1} + i^2 P_{i, i} + (i + 1)^2 P_{i, i + 1} - i^2 \\
+        &= i^2 (P_{i, i - 1} + P_{i, i} + P_{i, i + 1}) - (2i - 1) P_{i, i - 1} + (2i + 1) P_{i, i + 1} - i^2 \\
+        &= i^2 - (2i - 1) \frac{i}{N} \frac{N - i}{N} + (2i + 1) \frac{N - i}{N} \frac{i}{N} - i^2 \\
+        &= 2 \frac{i(N - i)}{N^2} \\
+        &= 2 i/N \del{1 - i/N} \\
+        &= V_1(i)
 \end{align*}
 \subsubsection*{ii}
-To derive the variance of \( X(t) \) given \( X(0) = i \) we use the law of total variance,
+We will prove that for all \( t \geq 0 \)
 \[
-    \Var[Y] = \E_Z[\Var_Y[Y \mid Z]] + \Var_Z[\E_Y[Y \mid Z]]
+    \Var[X(t + 1) \mid X(0) = i] = V_1(i) + (1 - 2/N^2) \Var[X(t) \mid X(0) = i]
 \]
-and substitute, as before, \( Y = X(t + 1) \) and \( Z = X(t) \):
-\[
-    \Var[Y] = \E_Z[\Var_Y[Y \mid Z]] + \Var_Z[\E_Y[Y \mid Z]]
-\]
+By using the law of total variance and substituting \( Y = X(t + 1) \mid X(0) = i \) and \( Z = X(t) \), we get for each of the components:
+{\small
 \begin{align*}
-    \Var_Y[Y \mid Z = i]
-        &= \Var[X(t + 1) \mid X(t) = i] \\
-        &= \Var[X(1) \mid X(0) = i] \\
-        &= V_1(i) \\
+    \E_{X(t)}[\Var_{X(t + 1)}[X(t + 1) \mid X(t), X(0) = i]]
+        &= \E_{X(t)}[\Var_{X(t + 1)}[X(t + 1) \mid X(t), X(0) = i]] \\
+        &= \E_{X(t)}[2 X(t) / N (1 - X(t) / N) \mid X(0) = i] \\
+        &= - 2/N^2 \E_{X(t)}[X^2(t)] + 2/N \E_{X(t)}[X(t) \mid X(0) = i] \\
+        &= - 2/N^2 (\Var_{X(t)}[X(t) \mid X(0) = i] + (\E_{X(t)}[X(t) \mid X(0) = i])^2) + 2i/N \\
+        &= - 2/N^2 (\Var_{X(t)}[X(t) \mid X(0) = i] + i^2) + 2i/N \\
+        &= - 2/N^2 \Var_{X(t)}[X(t) \mid X(0) = i] + 2i/N(1 - i/N) \\
+        &= - 2/N^2 \Var_{X(t)}[X(t) \mid X(0) = i] + V_1(i) \\
     \\
-    \E_Z[\Var_Y[Y \mid Z]]
-        &=\sum_{i = 0}^{N} \Pr[Z = i] \Var_Y[Y \mid Z = i] \\
-        &=\sum_{i = 0}^{N} \Pr[X(t) = i] \Var[X(t + 1) \mid X(t) = i] \\
-        &=\sum_{i = 0}^{N} \Pr[X(t) = i] V_1(i) \\
-        &=2/N\sum_{i = 0}^{N} \Pr[X(t) = i] \del{i - i^2/N} \\
-        &=2/N(\E[X(t)] - \E[X^2(t)]/N)
-    \\
-    \E_Y[Y \mid Z = i]
-        &= \E[X(t + 1) \mid X(t) = i] \\
-        &= i \\
-    \\
-    \Var_Z[\E_Y[Y \mid Z]]
-        \E_Z[(\E_Y[Y \mid Z])^2] - (\E_Z[\E_Y[Y \mid Z]])^2 \\
-        \E_Z[(\E_Y[Y \mid Z])^2] - (\E_Y[Y])^2 \\
-        \E[(\E[X(t + 1) \mid X(t)])^2] - (\E[X(t + 1)])^2 \\
-        \E[(\E[X(t))^2] - (\E[X(t + 1)])^2 \\
-        &=
+    \Var_{X(t)}[\E_{X(t + 1)}[X(t + 1) \mid X(t), X(0) = i]]
+        &= \Var_{X(t)}[X(t) \mid X(0) = i]
+\end{align*}
+}
+and thus:
+\begin{align*}
+    \Var_{X(t + 1)}
+        &= \E_{X(t)}[\Var_{X(t + 1)}[X(t + 1) \mid X(t), X(0) = i]] + \Var_{X(t)}[\E_{X(t + 1)}[X(t + 1) \mid X(t), X(0) = i]] \\
+        &= - 2/N^2 \Var_{X(t)}[X(t) \mid X(0) = i] + V_1(i) + \Var_{X(t)}[X(t) \mid X(0) = i] \\
+        &= V_1(i) + (1 - 2/N^2) \Var_{X(t)}[X(t) \mid X(0) = i]
 \end{align*}
 
 \subsubsection*{iii}
+We have:
+\begin{align*}
+    V_1(i)
+        &= 2\frac{i(N - i)}{N^2} \\
+        &= i (N - i)\del{1 - 1 + 2/N^2} \\
+        &= - i (N - i)\del{1 - 2/N^2} + i(N - i)
+\end{align*}
+and thus if \( x_t(i) = \Var[X(t) \mid X(0) = i] \), the equation for \( \Var[X(t) \mid X(0) = 1] \) becomes:
+\begin{align*}
+    x_t(i) &= V_1(i) + (1 - 2/N^2) x_{t - 1}(i) \\
+    x_t(i) &= - i (N - i)(1 - 2/N^2) + i(N - i) + (1 - 2/N^2) x_{t - 1}(i) \\
+    x_t(i) - i(N - i) &= (1 - 2/N^2) (x_{t - 1}(i) - i(N - i))
+\end{align*}
+which is in the desired form.
 
+Therefore:
+\begin{align*}
+    x_t(i) &= i(N - i) + \del{1 - 2/N^2}^{t - 1} (x_{1}(i) - i(N - i)) \\
+           &= i(N - i) + \del{1 - 2/N^2}^{t - 1} (V_{1}(i) - i(N - i)) \\
+           &= i(N - i) + \del{1 - 2/N^2}^{t - 1} (2i(N - i)/N^2 - i(N - i)) \\
+           &= i(N - i) + \del{1 - 2/N^2}^{t - 1} i(N - i) (2/N^2 - 1) \\
+           &= i(N - i) \del{1 - \del{1 - 2/N^2}^t} \\
+           &= N^2 V_1(i)/2 \del{1 - \del{1 - 2/N^2}^t} \\
+           &= V_1(i) \frac{1 - \del{1 - 2/N^2}^t}{2 / N^2}
+\end{align*}
 
 \subsection*{c}
 Let
