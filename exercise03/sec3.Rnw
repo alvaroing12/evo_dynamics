@@ -22,7 +22,7 @@ The probability for a mutation in a single site is \( \mu = 10^{-5} \). Let \( X
         &= 1 - \Pr[X < 1] \\
         &= 1 - \Pr[X = 0]
 \end{align*}
-where \( P[X = 0] \) is the probability of acquiring \emph{no} mutations at all. The probability that a single site does not acquire a mutation is, by definition, \( (1 - \mu) \). Mutations are supposed to occur independently at each site, therefore, the probability of no sites acquiring mutation is
+where \( P[X = 0] \) is the probability of acquiring \emph{no} mutations at all. The probability that a single site does not acquire a mutation is, by definition, \( (1 - \mu) \). Mutations are assumed to occur independently at each site, therefore, the probability of no sites acquiring mutation is
 \[
     P[X = 0] = (1 - \mu)^{10^6}
 \]
@@ -37,7 +37,7 @@ The probability that the mutation will have fixated by time \( t \) is \( P(t) =
 \[
     T_{1/2} = \frac{\ln 2}{R}
 \]
-Since this time is finite, in principle this means that the mutation will eventually fixate, if we wait long enough. The reason for this is that offspring of a healthy individual are always mutants, thus it is not possible for the all-healthy state to fixate. On the contrary, the all-mutants state is absorbing; once it occurs, it fixates. Of course, depending on the nature of the population and environment, \( T_{1/2} \) can be either a reasonable or a prohibitively long time.
+Since this time is finite, in principle this means that the mutation will eventually fixate, if we wait long enough. The reason for this is that the offspring of a healthy individual are always mutants, thus it is not possible for the all-healthy state to fixate. On the contrary, the all-mutants state is absorbing; once it occurs, it fixates. Of course, depending on the nature of the population and environment, \( T_{1/2} \) can be either a reasonable or a prohibitively long time.
 
 \subsection*{d}
 In natural populations, the stable population assumption of the Moran process does not apply. That is, populations have a dynamic size (they grow or shrink) and usually a fitness advantage does not only imply increased survivability but also increased fertility. In particular, a fitter individual not only reproduces faster but also leaves more offspring, and in general, it is not the case that for every dying individual exactly one new arises. Indeed, if the non-mutant population reproduces at a faster rate, it will restrict the mutant population's access to resources, and thus drive it away from fixation and into minority status. In practice, this means that a deleterious mutation has a very low chance of fixating; the fitter subpopulations almost always dominate.
