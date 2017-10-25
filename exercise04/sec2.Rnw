@@ -1,3 +1,55 @@
 \section*{Problem 2}
 \subsection*{a}
 \subsection*{b}
+We assume that the crypts do not interact with each other. Since we are in a single stem cell model, a crypt transforms only after the single stem cell transforms. During \( t \) days, a stem cell with a generation time of \( 10 \) days undergoes \( t/10 \) divisions. The probability of mutation is \( u = 10^{-8} \) per division per gene. Assuming each division is an independent experiment, the chance of a particular gene having mutated after \( d \) divisions is
+\[
+    P(d) = 1 - (1 - u)^d
+\]
+We assume that after the stem cell transforms, it reproduces at the same rate as before, producing a new daughter cell each \( 10 \) days. The cell will need \( 10N \) days before replacing all \( N \) cells in a colony (linear process assumption). For \( N = 10^3 \) and \( s = 5\% \), this amounts to
+\[
+    10 \times 10^3 \, \mbox{days} \approx 27.8 \, \mbox{years}
+\]
+Thus, for the crypt to transform after \( 50 \) years, the stem cell must have transformed the latest after \( 50 - 27.8 = 22.2 \) years, which amounts to \( 800 \) divisions. By the binomial approximation:
+\[
+    P(800) = 1 - (1 - 10^{-8})^{800} \approx 1 - (1 - 800 \times 10^{-8}) = 8 \times 10^{-6}
+\]
+Starting with \( M = 10^7 \) crypts with the same properties, the expected number of crypts to have transformed after \( 50 \) years is
+\[
+    M P(800) = 10^7 \times 8 \times 10^{-6} = 80
+\]
+
+\subsection*{c}
+We assume that the crypts do not interact with each other. Since there are multiple stem cells per crypt, a crypt transforms only after \emph{all} stem cells have transformed, i.\@e.\@ when a mutation arising in some stem cell reaches fixation among stem cells. We can distinguish 3 phases in this process:
+\begin{enumerate}
+    \item A mutation arises in one of the stem cells, giving fitness advantage.
+    \item The mutation fixates among stem cells.
+    \item The mutation fixates in the entire crypt.
+\end{enumerate}
+
+Suppose we start with a population of \( N_S \) healthy stem cells. At each generation, the stem cells divide and can mutate with a probability of \( u \) per gene. The time until a particular stem cell mutates is exponentially distributed with a parameter \( u \). The time until the \emph{first} such cell mutates is exponentially distributed with a parametre \( N_S u\) (competing exponentials). Thus, the probability that after time  \( t \) the first stem cell has mutated is \( P_1(t) = 1 - \mathrm{e}^{-N_S u t} \).
+
+Once a single stem cell has mutated, the mutation starts spreading to other stem cells at a rate \( R = N_s u \rho \), where \( \rho \) is the fixation probability of the mutation when only a single mutant exists (Moran process assumption). From theory, we now this is equal to
+\[
+    \frac{1 - 1/r}{1 - 1/r^N}
+\]
+where \( r = 1 + s \) is the selection advantage of the mutant. The probability that a mutation arising at \( t_0 = 0 \) fixates after time \( t \) is \( P_2(t) = 1 - \mathrm{e}^{-R t} \), where \( t \) is in days.
+
+Finally, we investigate the time required for the last step, \( T_3 \). As before, we assume that a mutated stem cell has the same generation time of a healthy stem cell, \( 10 \) days. In addition, we assume that each stem cell gives rise to an equal number of tissue cells, thus each stem cell is responsible for a `line' of tissue cells, of length \( N/N_S \). Once a stem cell transforms, it begins replacing its `line' of tissue cells, one by one, by mutants. The `line' fully transforms after 
+\[
+    T_3 = 10 N / N_S \, \mbox{days}
+\]
+Immediately after the last stem cell mutates, there may be more than one healthy `lines` (if, for example, another stem cell has transformed only recently), but none will be longer than \( N/N_S \) cells. Thus, phase 3 lasts exactly \( T_3 \) days, the time required for the longest `line' to transform. For \( N = 10^3 \) and \( N_S = 6 \):
+\[
+    T_3 = 10 \times 10^3 / 6 \approx 4.6 \, \mbox{years}
+\]
+
+The probability that a crypt has fully transformed after \( T \) years is equal to the probability of a crypt having finished phases 1 and 2 after \( T - T_3 \) years. Suppose \( T_1 \) is the time allowed for phase 1 and \( T_2 \) is the time allowed for phase 2. A crypt transforms iff \( T_1 + T_2 \leq T - T_3 \). For fixed \( T_1 \) and \( T_2 \), this happens with probability \( P_1(T_1) P_2(T_2) \). Therefore, the total probability \( P(T) \) of a crypt transforming after time \( T \) is:
+\begin{align*}
+    P(T)
+        &= \int_{0}^{T - T_3} P_1(t) P_2(T - T_3 - t) \dif t \\
+        &= \ldots
+\end{align*}
+The expected number of crypts that have transformed after \( 70 \) years is
+\[
+    M P(70 \times 360) = \ldots
+\]
