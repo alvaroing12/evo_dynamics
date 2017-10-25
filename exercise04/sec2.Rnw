@@ -52,7 +52,7 @@ We assume that the crypts do not interact with each other. Since there are multi
     \item The mutation fixates in the entire crypt.
 \end{enumerate}
 
-Suppose we start with a population of \( N_S \) healthy stem cells. At each generation, the stem cells divide and can mutate with a probability of \( u \) per gene. The divisions until a particular stem cell mutates is an exponentially distributed r.\@v.\@ with parameter \( u \). The divisions until the \emph{first} such cell mutates is, thus, exponentially distributed with a parametre \( N_S u\) (competing exponentials). Thus, the probability that after \( d \) divisions the first stem cell has mutated is \( P_1(d) = 1 - \mathrm{e}^{-N_S u d} \), or, equivalently, expressing time \( t \) in days:
+Suppose we start with a population of \( N_S \) healthy stem cells. At each generation, the stem cells divide and can mutate with a probability of \( u \) per gene. The divisions until a particular stem cell mutates is an exponentially distributed r.\@v.\@ with parameter \( u \). The divisions until the \emph{first} such cell mutates is, thus, exponentially distributed with a parametre \( N_S u\) (competing exponentials). Thus, the probability that after \( d \) divisions the first stem cell has mutated is \( P_1(d) = 1 - \mathrm{e}^{-N_S u d} \) or, equivalently, expressing time \( t \) in days:
 \[
     P_1(t) = 1 - \mathrm{e}^{-N_S u (t/10)}
 \]
@@ -61,7 +61,7 @@ Once a single stem cell has mutated, the mutation starts spreading to other stem
 \[
     \rho = \frac{1 - 1/r}{1 - 1/r^N}
 \]
-where \( r = 1 + s \) is the selection advantage of the mutant. The probability that a mutation arising at \( d_0 = 0 \) fixates after \( d \) divisions is \( P_2(d) = 1 - \mathrm{e}^{-R d} \), or, equivalently, expressing time \( t \) in days:
+where \( r = 1 + s \) is the selection advantage of the mutant. The probability that a mutation arising at \( d_0 = 0 \) fixates after \( d \) divisions is \( P_2(d) = 1 - \mathrm{e}^{-R d} \) or, equivalently, expressing time \( t \) in days:
 \[
     P_2(t) = 1 - \mathrm{e}^{-R (t/10)}
 \]
@@ -83,5 +83,5 @@ The probability that a crypt has fully transformed after \( T \) years is equal 
 \end{align*}
 The expected number of crypts that have transformed after \( 70 \) years is
 \[
-    M \times P(70 \times 365) = \ldots
+    M \times P(70 \times 365) = 10^7 \times \ldots
 \]
