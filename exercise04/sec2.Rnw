@@ -1,5 +1,5 @@
 \section*{Problem 2}
-In all following cases we assume that mutated stem cells divide at the same speed as healthy cells, and that crypts do not interact with each other. In the crypts were there are stem cells, these are the only cells that replicate; a stem-cell crypt is considered neoplastic once all of its stem cells have mutated. 
+In all following cases we assume that mutated stem cells divide at the same speed as healthy cells, and that crypts do not interact with each other. In the crypts were there are stem cells, these are the only cells that replicate; a stem-cell crypt is considered neoplastic once all of its stem cells have mutated.
 \subsection*{a}
 Acquiring the mutation gives a selective advantage of \( s = 5\% \), thus the mutants have relative fitness \( r = 1 + s = 1.05 \). Assuming a Moran process, the probability of fixation beginning from a single mutant is:
 \begin{align*}
@@ -33,21 +33,26 @@ Therefore, the expected number of neoplastic crypts after \( 50 \) years is:
 \]
 
 \subsection*{b}
-We assume that the crypts do not interact with each other. Since we are in a single stem cell model, a crypt transforms only after the single stem cell transforms. During \( t \) days, a stem cell with a generation time of \( 10 \) days undergoes \( t/10 \) divisions. The probability of mutation is \( u = 10^{-8} \) per division per gene. Assuming each division is an independent experiment, the chance of a particular gene having mutated after \( d \) divisions is
+In a single stem cell model, a crypt transforms only after the single stem cell transforms, thus a mutation has a fixation probability of \( \rho = 1/N\), i.e.\@ the probability of affecting the stem cell. We assume that the crypt begins with a healthy stem cell. As before, the mutation spreads at rate
+\begin{align*}
+    P(d)
+        &= 1 - \mathrm{e}^{-R d} \\
+        &= 1 - \mathrm{e}^{-N u \rho d} \\
+        &= 1 - \mathrm{e}^{-u d}
+\end{align*}
+where \( d \) is the number of divisions of the stem cell. Since the stem cell divides every \( 10 \) days,
 \[
-    P(d) = 1 - (1 - u)^d
+    P(t) = 1 - \mathrm{e}^{-u (t/10)}
 \]
-We assume that after the stem cell transforms, it reproduces at the same rate as before, producing a new daughter cell each \( 10 \) days. The cell will need \( 10N \) days before replacing all \( N \) cells in a colony (linear process assumption). Assuming a year has \( 365 \) days and \( N = 10^3 \), all tissue cells will have transformed after:
+After \( 50 \) years, a crypt has transformed with probability
+\begin{align*}
+    P(50 \times 365)
+        &= 1 - \mathrm{e}^{-10^8 \times 1825} \\
+        &\approx 1.825 \times 10^{-5}
+\end{align*}
+Therefore, the expected number of neoplastic crypts after \( 50 \) years is:
 \[
-    T_N = 10 \times 10^3 \, \mbox{days} \approx 27.4 \, \mbox{years}
-\]
-Thus, for the crypt to transform after \( 50 \) years, the stem cell must have transformed the latest after \( 50 - T_N = 22.6 \) years, which amounts to approximately \( 825 \) divisions. By the binomial approximation:
-\[
-    P(825) = 1 - \del{1 - 10^{-8}}^{825} \approx 1 - \del{1 - 825 \times 10^{-8}} = 8.25 \times 10^{-6}
-\]
-Starting with \( M = 10^7 \) crypts with the same properties, the expected number of crypts to have transformed after \( 50 \) years is
-\[
-    M \times P(825) = 10^7 \times 8.25 \times 10^{-6} \approx 83
+    M \times P(50 \times 365) \approx 10^7 \times 1.825 \times 10^{-5} \approx 183
 \]
 
 \subsection*{c}
