@@ -7,7 +7,7 @@ We solve the ODE for \( X_0 \) by separation of variables:
     \frac{\dif X_0}{X_0} &= - u_1 \dif t \\
     \int \frac{\dif X_0}{X_0} &= - \int u_1 \dif t &[\mbox{indefinite integration}] \\
     \ln \envert{X_0} &= - u_1 (t + D_0) \\
-    \envert{X_0} &= \mathrm{e}^{-u_1 t} \mathrm{e}^{D_0} \\
+    \envert{X_0} &= \mathrm{e}^{D_0} \mathrm{e}^{-u_1 t} \\
     X_0(t) &= A_0 \mathrm{e}^{-u_1 t} &\sbr{A_0 = \pm \mathrm{e}^{D_0}}
 \end{align*}
 Substituting \( X_0(0) = 1 \) we find \( A_0 = 1 \), thus the final solution is:
@@ -20,11 +20,11 @@ We can now solve the ODE for \( X_1 \) by employing integrating factors:
     \dod{X_1}{t} + N u_2 X_1 &= u_1 X_0 \\
     \mathrm{e}^{N u_2 t} \dod{X_1}{t} + N u_2 \mathrm{e}^{N u_2 t} X_1 &= \mathrm{e}^{N u_2 t} u_1 X_0 \\
     \dod{}{t}\left(\mathrm{e}^{N u_2 t} X_1 \right) &= \mathrm{e}^{N u_2 t} \del{u_1 \mathrm{e}^{-u_1 t}} \\
-    \mathrm{e}^{N u_2 t} X_1 &= u_1 \int \mathrm{e}^{\del{N u_2 - u_1 t}} \dif t &[\mbox{indefinite integration}] \\
+    \mathrm{e}^{N u_2 t} X_1 &= u_1 \int \mathrm{e}^{(N u_2 - u_1) t} \dif t &[\mbox{indefinite integration}] \\
     \mathrm{e}^{N u_2 t} X_1 &= \frac{u_1}{N u_2 - u_1} \del{\mathrm{e}^{(N u_2 - u_1) t} + D_1} \\
     X_1(t) &= \frac{u_1}{N u_2 - u_1} \del{\mathrm{e}^{- u_1 t} + D_1 \mathrm{e}^{-N u_2 t}}
 \end{align*}
-Substituting \( X_1(1) = 0 \) we find \( D_1 = -1 \), thus the final solution is:
+Substituting \( X_1(0) = 0 \) we find \( D_1 = -1 \), thus the final solution is:
 \[
     X_1(t) = \frac{u_1}{N u_2 - u_1} \del{\mathrm{e}^{- u_1 t} - \mathrm{e}^{-N u_2 t}}
 \]
@@ -39,6 +39,6 @@ thus
 Substituting values at \(t = 0 \), we find that \( C = 1 \). Therefore:
 \begin{align*}
     X_2(t) &= 1 - X_1(t) - X_0(t) \\
-           &= 1 - \frac{u_1}{N u_2 - u_1} \del{\mathrm{e}^{-N u_2 t} - \mathrm{e}^{-u_1 t}} - \mathrm{e}^{-u_1 t} \\
-           &= 1 - \frac{1}{N u_2 - u_1} \del{u_1 \mathrm{e}^{-N u_2 t} - N u_2\mathrm{e}^{-u_1 t}}
+           &= 1 - \frac{u_1}{N u_2 - u_1} \del{\mathrm{e}^{-u_1 t} - \mathrm{e}^{-N u_2 t}} - \mathrm{e}^{-u_1 t} \\
+           &= 1 - \frac{1}{N u_2 - u_1} \del{N u_2\mathrm{e}^{-u_1 t} - u_1 \mathrm{e}^{-N u_2 t}}
 \end{align*}
