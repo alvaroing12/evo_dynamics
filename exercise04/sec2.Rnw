@@ -1,5 +1,31 @@
 \section*{Problem 2}
 \subsection*{a}
+We assume that mutated cells divide at the same speed as healthy cells, that is every \( 1 \) day. Acquiring the mutation gives a selective advantage of \( s = 5\% \), thus the mutants have relative fitness \( r = 1 + s = 1.05 \). Assuming a Moran process, the probability of fixation beginning from a single mutant is:
+\begin{align*}
+    \rho
+        &= \frac{1 - 1/r}{1 - 1/r^N} \\
+        &= \frac{1 - 1/(1 + s)}{1 - 1/(1 + s)^N}
+\end{align*}
+The mutation spreads at a rate:
+\begin{align*}
+    R
+        &= N u \rho \\
+        &= 10^3 \times 10^{-8} \times \frac{1 - 1/1.05}{1 - 1/1.05^{10^3}} \\
+        &\approx 4.762 \times 10^{-7}\, \mbox{divisions}^{-1}
+\end{align*}
+The probability that after \( d \) divisions the mutation has fixated is \( P(d) = 1 - \mathrm{e}^{-R d} \) or, equivalently, expressing time \( t \) in days:
+\[
+    P(t) = 1 - \mathrm{e}^{-R (t/10)}
+\]
+After \( 50 \) years, the probability that a single crypt has transformed is
+\[
+    P(50 \times 365) = \ldots
+\]
+We assume that crypts do not affect each other, and have the same properties. Therefore, the expected number of neoplastic crypts after \( 50 \) years is:
+\[
+    M \times P(50 \times 365) = \ldots
+\]
+
 \subsection*{b}
 We assume that the crypts do not interact with each other. Since we are in a single stem cell model, a crypt transforms only after the single stem cell transforms. During \( t \) days, a stem cell with a generation time of \( 10 \) days undergoes \( t/10 \) divisions. The probability of mutation is \( u = 10^{-8} \) per division per gene. Assuming each division is an independent experiment, the chance of a particular gene having mutated after \( d \) divisions is
 \[
