@@ -1,13 +1,13 @@
 \section*{Problem 1}
 \subsection*{a}
-We can calculate the ratio of Cancers initiated with CIN against those initiated without CIN by taking de ratio \( \frac{Y_2(t)}{X_2(t)} \). Therefore, for each of the three cases we have:
+We can calculate the ratio of cancers initiated with CIN against those initiated without CIN by taking the ratio \( \frac{Y_2(t)}{X_2(t)} \). Therefore, for each of the three cases we have:
 \begin{enumerate}
   \item Neutral CIN:\\
-\[ \frac{Y_2(t)}{X_2(t)} = \frac{u_1u_ct^2}{\frac{Nu_1u_2t^2}{2}} = \frac{2u_c}{Nu_2} \]
+\[ \frac{Y_2(t)}{X_2(t)} = \frac{u_1u_ct^2}{N u_1 u_2 t^2/2} = \frac{2u_c}{Nu_2} \]
   \item Costly CIN in small compartments:\\
-\[ \frac{Y_2(t)}{X_2(t)} = \frac{N \rho u_1u_ct^2}{\frac{Nu_1u_2t^2}{2}} = \frac{2 \rho u_c}{u_2} \]
+\[ \frac{Y_2(t)}{X_2(t)} = \frac{N \rho u_1u_ct^2}{N u_1 u_2 t^2/2} = \frac{2 \rho u_c}{u_2} \]
   \item Costly CIN in large compartments:\\
-\[ \frac{Y_2(t)}{X_2(t)} = \frac{\frac{Ru_1t^2}{2}}{\frac{Nu_1u_2t^2}{2}} = \frac{R}{Nu_2} \]
+\[ \frac{Y_2(t)}{X_2(t)} = \frac{R u_1 t^2 / 2}{N u_1 u_2 t^2 / 2} = \frac{R}{Nu_2} \]
 \end{enumerate}
 
 \subsection*{b}
@@ -16,14 +16,14 @@ We will use the fact that \(u_c = 2(2n_1 + n_2)u \), and also \(u_2 = 2u\) to su
   \item Neutral CIN: \\
 \[ \frac{2u_c}{Nu_2} = \frac{2 \cdot 2(2n_1 + n_2)u}{N2u} = \frac{4n_1 + 2n_2}{N} = \frac{32}{10} = 3.2\]
   \item Costly CIN in small compartments:\\
-We will additionaly use the fact that having a fitness disadvantage \(r = 0.9\), the fixation probability in the Moran process is \(\rho = \frac{1 - \frac{1}{r}}{1 - \frac{1}{r^N}}\).\\
+We will additionaly use the fact that having a fitness disadvantage \(r = 0.9\), the fixation probability in the Moran process is \(\rho = \del{1 - \frac{1}{r}}/\del{1 - \frac{1}{r^N}} \):\\
 \[ \frac{2 \rho u_c}{u_2} 
 = \frac{2 \cdot \frac{1 - \frac{1}{r}}{1 - \frac{1}{r^N}} \cdot 2(n_1 + n_2)u}{2u} 
-= \frac{1 - \frac{1}{r}}{1 - \frac{1}{r^N}} \cdot (4n_1 + 2n_2) = 32 \cdot \frac{1 - \frac{1}{0.9}}{1 - \frac{1}{0.9^{10}}} = 1.903 \]
+= (4n_1 + 2n_2) \cdot \frac{1 - \frac{1}{r}}{1 - \frac{1}{r^N}}  = 32 \cdot \frac{1 - \frac{1}{0.9}}{1 - \frac{1}{0.9^{10}}} = 1.903 \]
   \item Costly CIN in large compartments:\\
-We will additionaly use the fact that the population tunnels from \(X_1\) to \(Y_2\) at a rate \(R = \frac{N u_c r u_3}{1-r}\).\\
+We will additionaly use the fact that the population tunnels from \(X_1\) to \(Y_2\) at a rate \(R = (N u_c r u_3)/(1-r)\).\\
 \[ \frac{R}{Nu_2} = 
-\frac{\frac{N u_c r u_3}{1-r}}{Nu_2} = 
+\frac{(N u_c r u_3)/(1-r)}{Nu_2} =
 \frac{2u(2n_1 + n_2) r u_3}{2u(1-r)} =  
 \frac{(2n_1 + n_2)ru_3}{1-r} = 
 \frac{16 \cdot 0.9 \cdot 0.01}{0.1} = 1.44
