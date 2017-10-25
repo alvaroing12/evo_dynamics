@@ -1,8 +1,8 @@
 \section*{Problem 3}
 \subsection*{a}
-We are considering the inactivation of a tumor suppressor gene small diploid populations, where \( X_0 \), \( X_1 \) and \( X_2\) represent the frequency of \( +/+ \), \( +/- \) and \( -/- \) cells, respectively. Due to the form of the last ODE, we are asssuming that type 2 cells are being produced at a rate \( N u_2 \) from type 1 cells. Since a single type 1 cell mutates into type 2 at a rate of \( u_2 \), the rate of \( N u_2 \) is only achievable with \( N \) competing cells. Because \( N \) is the entire population, this equation assumes that before a single type 2 cell is produced all \( N \) cells are already of type 1, that is the first mutation has reached fixation.
+We are considering the inactivation of a tumor suppressor gene in small diploid populations, where \( X_0 \), \( X_1 \) and \( X_2\) represent the frequency of \( +/+ \), \( +/- \) and \( -/- \) cells, respectively. Due to the form of the last ODE, we are asssuming that type 2 cells are being produced at a rate \( N u_2 \) from type 1 cells. Since a single type 1 cell mutates into type 2 at a rate of \( u_2 \), the rate of \( N u_2 \) is only achievable with \( N \) competing cells. Because \( N \) is the entire population, this equation assumes that before a single type 2 cell is produced all \( N \) cells are already of type 1, that is the first mutation has reached fixation.
 
-Since type 1 cells have the same fitness to type 0 (neutral mutation assumption), the fixation probability of this mutation is \( \rho = 1/N \). According to the slides, the expected time to fixation in such a situation is
+Since type 1 cells have the same fitness as type 0 (neutral mutation assumption), the fixation probability of this mutation is \( \rho = 1/N \). According to the slides, the expected time to fixation in such a situation is
 \[
     T_1 = 1/\rho = N
 \]
