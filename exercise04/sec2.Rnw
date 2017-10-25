@@ -1,29 +1,35 @@
 \section*{Problem 2}
+In all following cases we assume that mutated stem cells divide at the same speed as healthy cells, and that crypts do not interact with each other. In the crypts were there are stem cells, these are the only cells that replicate; a stem-cell crypt is considered neoplastic once all of its stem cells have mutated. 
 \subsection*{a}
-We assume that mutated cells divide at the same speed as healthy cells, that is every \( 1 \) day. Acquiring the mutation gives a selective advantage of \( s = 5\% \), thus the mutants have relative fitness \( r = 1 + s = 1.05 \). Assuming a Moran process, the probability of fixation beginning from a single mutant is:
+Acquiring the mutation gives a selective advantage of \( s = 5\% \), thus the mutants have relative fitness \( r = 1 + s = 1.05 \). Assuming a Moran process, the probability of fixation beginning from a single mutant is:
 \begin{align*}
     \rho
         &= \frac{1 - 1/r}{1 - 1/r^N} \\
-        &= \frac{1 - 1/(1 + s)}{1 - 1/(1 + s)^N}
+        &= \frac{1 - 1/(1 + s)}{1 - 1/(1 + s)^N} \\
+        &= \frac{1 - 1/(1.05)}{1 - 1/(1 + s)^{10^3}} \\
+        &\approx 0.04761
 \end{align*}
 The mutation spreads at a rate:
 \begin{align*}
     R
         &= N u \rho \\
-        &= 10^3 \times 10^{-8} \times \frac{1 - 1/1.05}{1 - 1/1.05^{10^3}} \\
-        &\approx 4.762 \times 10^{-7}\, \mbox{divisions}^{-1}
+        &\approx 10^3 \times 10^{-8} \times 0.04761 \\
+        &= 4.761 \times 10^{-7}
 \end{align*}
-The probability that after \( d \) divisions the mutation has fixated is \( P(d) = 1 - \mathrm{e}^{-R d} \) or, equivalently, expressing time \( t \) in days:
+The probability that after \( d \) divisions the mutation has fixated is \( P(d) = 1 - \mathrm{e}^{-R d} \) or, equivalently, expressing time \( t \) in days (since once division happens per day):
 \[
-    P(t) = 1 - \mathrm{e}^{-R (t/10)}
+    P(t) = 1 - \mathrm{e}^{-R t}
 \]
 After \( 50 \) years, the probability that a single crypt has transformed is
+\begin{align*}
+    P(50 \times 365)
+        &= 1 - \mathrm{e}^{-R (50 \times 365)} \\
+        &\approx 1 - \mathrm{e}^{- 4.761 \times 10^{-7} \times 18250} \\
+        &\approx 0.865\%
+\end{align*}
+Therefore, the expected number of neoplastic crypts after \( 50 \) years is:
 \[
-    P(50 \times 365) = \ldots
-\]
-We assume that crypts do not affect each other, and have the same properties. Therefore, the expected number of neoplastic crypts after \( 50 \) years is:
-\[
-    M \times P(50 \times 365) = \ldots
+    M \times P(50 \times 365) \approx 10^7 \times 0.865 \% = 86500
 \]
 
 \subsection*{b}
